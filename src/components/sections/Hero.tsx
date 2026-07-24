@@ -22,8 +22,8 @@ export default function Hero() {
       className="relative min-h-screen flex flex-col justify-between items-center px-6 pt-28 pb-12 overflow-hidden"
     >
       {/* Background glows */}
-      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[130px] pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-secondary/8 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/4 left-1/4 w-72 h-72 md:w-[500px] md:h-[500px] bg-primary/5 rounded-full blur-[100px] md:blur-[130px] pointer-events-none" />
+      <div className="absolute bottom-1/4 right-1/4 w-64 h-64 md:w-[400px] md:h-[400px] bg-secondary/8 rounded-full blur-[90px] md:blur-[120px] pointer-events-none" />
 
       <div className="section-container w-full relative z-10 my-auto">
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center max-w-6xl mx-auto">

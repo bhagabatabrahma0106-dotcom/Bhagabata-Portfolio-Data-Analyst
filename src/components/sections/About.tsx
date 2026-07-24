@@ -8,7 +8,7 @@ import SectionTitle from '../ui/SectionTitle';
 export default function About() {
   return (
     <section id="about" className="section-padding relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-80 h-80 bg-secondary/5 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute top-0 right-0 w-64 h-64 md:w-80 md:h-80 bg-secondary/5 rounded-full blur-[80px] md:blur-[100px] pointer-events-none" />
 
       <div className="section-container">
         <SectionTitle title="About Me" subtitle="Who I Am" />
@@ -130,7 +130,7 @@ export default function About() {
             </div>
 
             {/* Info tiles */}
-            <div className="grid grid-cols-3 gap-3 mt-8">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-8">
               {[
                 { label: 'CGPA', value: '80%' },
                 { label: 'Batch', value: '2026' },

@@ -123,7 +123,7 @@ const EdTechDashboard = () => {
       </div>
 
       {/* ── KPI Row ── */}
-      <div className="grid grid-cols-3 gap-px bg-white/[0.04] border-b border-white/5">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-px bg-white/[0.04] border-b border-white/5">
         {[
           { label: 'Apps Analyzed', value: 42,  suffix: '',   dec: 0, delta: '↑ +12%',  color: '#00F5FF' },
           { label: 'Avg Rating',    value: 4.3, suffix: '★',  dec: 1, delta: '↑ +0.4',  color: '#8B5CF6' },
@@ -538,7 +538,7 @@ const PipelineVisual = () => {
       </AnimatePresence>
 
       {/* Impact metrics */}
-      <div className="mt-3 grid grid-cols-3 gap-1.5">
+      <div className="mt-3 grid grid-cols-1 sm:grid-cols-3 gap-1.5">
         {[
           { label: 'Records',     value: 10000, suffix: '+', color: '#00F5FF' },
           { label: 'Quality ↑',   value: 25,    suffix: '%', color: '#10B981' },
@@ -762,8 +762,8 @@ export default function Projects() {
   return (
     <section id="projects" className="section-padding relative overflow-hidden">
       {/* Background glows */}
-      <div className="absolute top-1/3 left-0 w-[500px] h-[500px] bg-cyan-500/3 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-purple-500/3 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/3 left-0 w-72 h-72 md:w-[500px] md:h-[500px] bg-cyan-500/3 rounded-full blur-[100px] md:blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-72 h-72 md:w-[500px] md:h-[500px] bg-purple-500/3 rounded-full blur-[100px] md:blur-[140px] pointer-events-none" />
 
       <div className="section-container relative z-10">
         <SectionTitle title="Key Projects" subtitle="Featured Work & Real-World Impact" />

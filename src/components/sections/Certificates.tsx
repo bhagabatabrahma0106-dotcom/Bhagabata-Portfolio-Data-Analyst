@@ -26,9 +26,9 @@ export default function Certificates() {
   return (
     <section id="certificates" className="section-padding relative overflow-hidden">
       {/* Ambient glows */}
-      <div className="absolute top-0 left-1/3 w-[400px] h-[400px] rounded-full blur-[130px] pointer-events-none"
+      <div className="absolute top-0 left-1/3 w-64 h-64 md:w-[400px] md:h-[400px] rounded-full blur-[90px] md:blur-[130px] pointer-events-none"
         style={{ background: 'radial-gradient(circle, rgba(0,245,255,0.04), transparent)' }} />
-      <div className="absolute bottom-0 right-1/3 w-[400px] h-[400px] rounded-full blur-[130px] pointer-events-none"
+      <div className="absolute bottom-0 right-1/3 w-64 h-64 md:w-[400px] md:h-[400px] rounded-full blur-[90px] md:blur-[130px] pointer-events-none"
         style={{ background: 'radial-gradient(circle, rgba(139,92,246,0.04), transparent)' }} />
 
       <div className="section-container relative z-10">

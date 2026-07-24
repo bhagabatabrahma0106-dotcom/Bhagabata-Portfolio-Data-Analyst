@@ -351,9 +351,9 @@ export default function SkillLab() {
 
   return (
     <section id="skilllab" className="section-padding relative overflow-hidden">
-      <div className="absolute top-1/3 left-0 w-[500px] h-[500px] rounded-full blur-[140px] pointer-events-none"
+      <div className="absolute top-1/3 left-0 w-72 h-72 md:w-[500px] md:h-[500px] rounded-full blur-[100px] md:blur-[140px] pointer-events-none"
         style={{ background: `radial-gradient(circle, ${cfg.accent}06, transparent)` }} />
-      <div className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full blur-[120px] pointer-events-none"
+      <div className="absolute bottom-0 right-0 w-64 h-64 md:w-[400px] md:h-[400px] rounded-full blur-[90px] md:blur-[120px] pointer-events-none"
         style={{ background: `radial-gradient(circle, ${cfg.second}06, transparent)` }} />
 
       <div className="section-container relative z-10">
