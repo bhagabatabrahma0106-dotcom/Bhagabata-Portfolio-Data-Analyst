@@ -4,7 +4,7 @@ import { statistics } from '../../constants/data';
 import { staggerContainer, staggerItem } from '../../animations/variants';
 import { Trophy, Package, LayoutDashboard, CheckCircle2 } from 'lucide-react';
 
-/* ── Animated counter ─────────────────────────────────── */
+/* ── Animated Counter ── */
 function CountUp({ to, suffix = '' }: { to: number; suffix: string }) {
   const [count, setCount] = useState(0);
   const ref = useRef<HTMLSpanElement>(null);
@@ -37,35 +37,35 @@ function CountUp({ to, suffix = '' }: { to: number; suffix: string }) {
   );
 }
 
-/* ── Per-stat config ──────────────────────────────────── */
+/* ── Per-stat Config ── */
 const statConfig = [
   {
-    icon: <Trophy size={22} />,
+    icon: <Package size={22} />,
     accent: '#00F5FF',
     second: '#3B82F6',
-    bar: 85,
-    tag: 'Experience',
-  },
-  {
-    icon: <Package size={22} />,
-    accent: '#F59E0B',
-    second: '#F97316',
-    bar: 92,
-    tag: 'Data Scale',
+    bar: 95,
+    tag: 'Data Profiling',
   },
   {
     icon: <LayoutDashboard size={22} />,
+    accent: '#F59E0B',
+    second: '#F97316',
+    bar: 88,
+    tag: 'Power BI Reports',
+  },
+  {
+    icon: <Trophy size={22} />,
     accent: '#8B5CF6',
     second: '#EC4899',
-    bar: 78,
-    tag: 'Visualization',
+    bar: 90,
+    tag: 'T-SQL Queries',
   },
   {
     icon: <CheckCircle2 size={22} />,
     accent: '#10B981',
     second: '#14B8A6',
-    bar: 96,
-    tag: 'Data Quality',
+    bar: 98,
+    tag: 'Data Accuracy',
   },
 ];
 

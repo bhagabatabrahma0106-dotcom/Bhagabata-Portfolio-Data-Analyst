@@ -186,7 +186,7 @@ export default function Hero() {
                     <div className="flex items-center justify-between">
                       <div>
                         <div className="text-xs font-mono text-primary font-semibold">Bhagabata Brahma</div>
-                        <div className="text-[11px] text-white/70">Data & BI Professional</div>
+                        <div className="text-[11px] text-white/70">Data Analyst & Power BI Developer</div>
                       </div>
                       <span className="inline-flex items-center gap-1.5 px-2 py-1 rounded-md bg-emerald/20 border border-emerald/40 text-[10px] text-emerald font-mono font-medium">
                         <span className="w-1.5 h-1.5 rounded-full bg-emerald animate-ping" />
@@ -250,3 +250,5 @@ export default function Hero() {
     </section>
   );
 }
+
+

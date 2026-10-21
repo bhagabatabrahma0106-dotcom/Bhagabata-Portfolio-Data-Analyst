@@ -61,13 +61,20 @@ const categoryThemeMap: Record<string, {
     gradient: 'linear-gradient(90deg, #F59E0B 0%, #F97316 100%)',
     textColor: '#FBBF24',
   },
-  pink: {
-    border: 'border-pink-500/30 hover:border-pink-400/60',
-    glow: 'hover:shadow-[0_0_25px_rgba(236,72,153,0.25)]',
-    badge: 'bg-pink-500/10 text-pink-400 border-pink-500/30',
-    gradient: 'linear-gradient(90deg, #EC4899 0%, #F43F5E 100%)',
-    textColor: '#F472B6',
-  },
+      pink: {
+      border: 'border-pink-500/30 hover:border-pink-400/60',
+      glow: 'hover:shadow-[0_0_25px_rgba(236,72,153,0.25)]',
+      badge: 'bg-pink-500/10 text-pink-400 border-pink-500/30',
+      gradient: 'linear-gradient(90deg, #EC4899 0%, #F43F5E 100%)',
+      textColor: '#F472B6',
+    },
+    indigo: {
+      border: 'border-indigo-500/30 hover:border-indigo-400/60',
+      glow: 'hover:shadow-[0_0_25px_rgba(99,102,241,0.25)]',
+      badge: 'bg-indigo-500/10 text-indigo-400 border-indigo-500/30',
+      gradient: 'linear-gradient(90deg, #6366F1 0%, #8B5CF6 100%)',
+      textColor: '#818CF8',
+    },
 };
 
 // Individual skill proficiency ratings for detailed visual matrix
@@ -344,3 +351,5 @@ export default function Skills() {
     </section>
   );
 }
+
+

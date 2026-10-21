@@ -64,7 +64,7 @@ export default function Experience() {
 
                       <div className="flex items-center gap-2 text-sm text-secondary/80 mb-4">
                         <span className="font-semibold">{item.company}</span>
-                        <span className="text-white/20">·</span>
+                        <span className="text-white/20">&middot;</span>
                         <span className="flex items-center gap-1 text-white/40 text-xs">
                           <MapPin size={11} /> {item.location}
                         </span>

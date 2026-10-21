@@ -11,30 +11,30 @@ import type {
   NavItem,
 } from '../types';
 
-// ─── Personal Info ─────────────────────────────────────────────
+// Personal Info
 export const personalInfo: PersonalInfo = {
-  name: 'BHAGABATA BRAHMA',
+  name: 'Bhagabata Brahma',
   firstName: 'Bhagabata',
   initials: 'BB',
-  title: 'Data Analyst & Data Governance Specialist',
+  title: 'Data Analyst | Power BI Developer | Data Governance Analyst',
   titles: [
     'Data Analyst',
-    'Data Governance Specialist',
-    'MS Dynamics 365 F&O Consultant',
-    'Business Intelligence Analyst',
-    'SQL & Python Developer',
+    'Power BI Developer',
+    'Data Governance Analyst',
+    'SQL Developer',
+    'D365 F&O Developer',
   ],
   tagline:
-    'I build scalable data solutions, business intelligence dashboards, enterprise ERP customizations, and modern analytics pipelines.',
+    'Turning raw data into reliable decisions — through SQL, Power BI, and data governance.',
   email: 'bhagabatabrahma0106@gmail.com',
   phone: '+91 6371206662',
-  location: 'Whitefield, Bengaluru, Karnataka',
+  location: 'Whitefield, Bengaluru, Karnataka, India — 560066',
   github: 'https://github.com/bhagabatabrahma0106-dotcom',
-  linkedin: 'https://linkedin.com/in/bhagabata-brahma',
-  portfolio: 'https://jerry-s-portfolio-web.vercel.app',
+  linkedin: 'https://www.linkedin.com/in/bhagabata-brahma/',
+  portfolio: 'https://bhagabata-brahma-data-analyst.vercel.app/',
 };
 
-// ─── Navigation ────────────────────────────────────────────────
+// Navigation
 export const navItems: NavItem[] = [
   { id: 'home', label: 'Home' },
   { id: 'about', label: 'About' },
@@ -47,229 +47,343 @@ export const navItems: NavItem[] = [
   { id: 'contact', label: 'Contact' },
 ];
 
-// ─── Career Objective ──────────────────────────────────────────
-export const objective =
-  "B.Tech graduate in Computer Science (Class of 2026) with close to 1 year of hands-on internship experience as a Data Analyst — Data Management, Data Governance, Data Quality, and Reporting using SQL, MS Excel, Tableau, PowerPoint, and Python. Also completed structured Microsoft Dynamics 365 Finance & Operations training and hands-on Collibra Data Governance & Data Catalog training. Seeking an entry-level Data Analyst or Data Governance Analyst role to apply analytical thinking and data governance expertise to solve real-world business problems.";
 
-// ─── Education ─────────────────────────────────────────────────
+// Professional Objective
+export const objective =
+  'Data Analyst and Power BI Developer with hands-on internship experience in SQL, Excel, Power BI, Python/pandas, and data governance. Profiled and segmented 5,000+ B2B customer records, removed 300+ duplicates, and validated master data to 98%+ accuracy. Built and published three interactive Power BI reports using DAX and Power Query. Authored 20+ T-SQL queries and developed five reusable Excel/Google Sheets templates for multi-source data consolidation. Also developed a custom Fixed Deposit Treasury Management capability in Microsoft Dynamics 365 Finance & Operations using X++. B.Tech in Computer Science & Engineering (CGPA 8.04) from Biju Patnaik University of Technology (BPUT), Odisha, graduating 2026.';
+
+// Education
 export const education: Education[] = [
   {
-    degree: 'Bachelor of Technology (B.Tech) in Computer Science',
+    degree: 'B.Tech — Computer Science & Engineering',
     period: '2022 – 2026',
-    institution: 'Satyasai Engineering College (SSEC)',
+    institution: 'Satyasai Engineering College (Affiliated to BPUT, Odisha)',
     location: 'Balasore, Odisha',
-    score: 'Aggregate: 80%',
+    score: 'CGPA: 8.04',
   },
   {
-    degree: 'Higher Secondary Certificate (+2 / Class XII)',
+    degree: 'Intermediate (+2) — Science (CHSE, Odisha)',
     period: '2020 – 2022',
     institution: 'Council of Higher Secondary Education (CHSE)',
     location: 'Odisha',
-    score: 'Aggregate: 77%',
+    score: '77%',
   },
 ];
 
-// ─── Experience ────────────────────────────────────────────────
+// Experience
 export const experience: ExperienceItem[] = [
   {
-    role: 'Technical Trainee – Microsoft Dynamics 365 F&O',
-    company: 'Ghora Technologies',
+    role: 'Finance Operations Analyst Intern & D365 F&O Developer (Trainee)',
+    company: 'Gohra Technologies',
     location: 'Bengaluru, Karnataka',
-    period: 'Jan 2025 – Jun 2025',
-    type: 'Training Program',
+    period: 'Oct 2025 – Present',
+    type: 'Internship & Training',
     bullets: [
-      'Completed a structured 6-month technical training program in Microsoft Dynamics 365 Finance & Operations, covering architecture, data modelling, and enterprise module configuration across 100+ guided sessions.',
-      'Mastered advanced SQL concepts including multi-table joins (Simple, FK, Field Fixed, Related Field Fixed), subqueries, and aggregations, completing 100+ practice problems.',
-      'Developed and customized SSRS (SQL Server Reporting Services) reports for Purchase Orders and Sales Orders, applying report design, data source configuration, and query optimization.',
-      'Analyzed and debugged Functional Design Documents (FDDs) for real-world client implementations (Bangladesh, Zimbabwe), translating requirements into structured data deliverables.',
-      'Gained hands-on proficiency with QBDS, AOT Queries, Views, Maps, and Container objects, building runnable test classes to validate and profile data.',
-      'Studied end-to-end AR and AP business flows, strengthening understanding of enterprise financial data pipelines and master data management.',
+      'Developed a custom Fixed Deposit Treasury Management capability in Microsoft Dynamics 365 Finance & Operations, centralising deposit bank details, principal amount, interest rate, tenure, maturity date, and lifecycle status.',
+      'Structured two linked data tables — an FD register and an interest schedule — enabling clean separation of master data and transactional accrual records.',
+      'Implemented automatic FD numbering and configurable Actual/365 or 360-day interest, accrual, and maturity calculations to support standard treasury accounting practices.',
+      'Connected approval and lifecycle workflows covering accrual, payment, renewal, maturity, and premature closure, ensuring authorised progression through each stage.',
+      'Incorporated voucher references, posting dates, audit history, and error logs to support traceability and analyst reconciliation across finance and treasury teams.',
+      'Used X++, AOT tables, forms, and workflow extensions to translate finance business requirements into maintainable, scalable Dynamics 365 F&O functionality.',
     ],
-    tags: ['D365 F&O', 'X++', 'SSRS', 'AOT', 'SQL Server', 'Data Modeling', 'AR/AP'],
+    tags: ['D365 F&O', 'X++', 'AOT', 'Treasury Management', 'Finance Workflows', 'SQL Server'],
   },
   {
     role: 'Data Analyst Intern',
     company: 'Data Gyan',
     location: 'Bengaluru, Karnataka',
-    period: 'Oct 2024 – Feb 2025',
+    period: 'Oct 2025 – Feb 2026',
     type: 'Internship',
     bullets: [
-      'Gathered and consolidated 10,000+ records from LinkedIn, industry conferences, and vendor customer lists to support business development and marketing.',
-      'Authored and executed 50+ SQL scripts for ETL operations, building a consolidated master dataset in SQL Server that reduced data fragmentation across 8+ source categories.',
-      'Developed 5+ Tableau dashboards to communicate key business insights, reducing manual reporting time by ~30%.',
-      'Identified and resolved 500+ data quality issues (duplicates, null values, inconsistencies, format errors) through SQL-based validation, improving dataset accuracy by ~25%.',
-      'Applied Data Governance principles — data stewardship, governance workflow management, asset onboarding, policy management, and Data Catalog administration using Collibra.',
+      'Analysed and segmented 5,000+ B2B customer records into three targeting groups, aligning data collection scope and KPI definitions with stakeholders across three project phases.',
+      'Authored 20+ T-SQL queries and built five reusable Excel/Google Sheets templates for consolidating, cleaning, and structuring multi-source data from LinkedIn, conference, and vendor customer lists.',
+      'Built and published three interactive Power BI reports using Power Query and DAX to track lead volume, conversion rates, and campaign reach across multiple periods.',
+      'Automated deduplication, null handling, and column standardisation using Python/pandas, removing 300+ duplicate records before SQL loading.',
+      'Validated six data-quality issue categories using pre-load and post-load SQL checks, achieving 98%+ final master-data accuracy across the consolidated dataset.',
+      'Documented data lineage, 15+ business glossary terms, and metadata for 12 data assets in line with DAMA-DMBOK data governance principles.',
     ],
-    tags: ['SQL', 'Tableau', 'ETL', 'Collibra', 'Excel', 'Python', 'Data Quality'],
+    tags: ['SQL Server', 'Power BI', 'DAX', 'Power Query', 'Python', 'pandas', 'Excel', 'Data Governance'],
   },
 ];
 
-// ─── Projects ──────────────────────────────────────────────────
+// Projects
 export const projects: Project[] = [
   {
-    title: 'Data Management & Governance Pipeline',
+    title: 'Pizza Sales Performance Analysis',
     description:
-      'Designed an end-to-end data management pipeline, sourcing raw data from multiple channels and consolidating into a structured master dataset via SQL Server. Implemented Data Governance workflows using Collibra including policy management, asset onboarding, and business glossary creation.',
-    period: 'Oct 2024 – Feb 2025',
-    source: 'Data Gyan, Bengaluru',
-    tools: ['SQL Server', 'MS Excel', 'Tableau', 'Collibra', 'Google Sheets'],
+      'Analysed 48,620 transaction rows and 21,350 distinct orders from 2015 using T-SQL to surface daily, hourly, and monthly demand patterns, category and size mix, and best- and worst-selling products. Combined with a filterable Power BI dashboard, the solution gives operators a clear view of revenue drivers ($817.86K total), peak periods, and menu performance — supporting promotional planning and operational decisions. Total pizzas sold: 49,574; average order value: $38.31; average pizzas per order: 2.32.',
+    period: '2025',
+    source: 'Personal Project',
+    tools: ['Microsoft SQL Server', 'Power BI', 'DAX', 'T-SQL'],
+    featured: true,
+  },
+  {
+    title: 'E-Commerce Order Performance Analysis',
+    description:
+      'Cleaned and standardised 199 raw order lines in Excel — checking inconsistent categories, invalid dates, non-numeric prices, missing values, and outliers — before loading into SQL Server. Authored T-SQL KPI queries covering revenue, order volume, average order value, returns and cancellations, and repeat customers. Built interactive Power BI views for product, category, and country trends; monthly performance; payment mix; and order status filters.',
+    period: '2025',
+    source: 'Personal Project',
+    tools: ['Excel', 'Microsoft SQL Server', 'Power BI', 'DAX', 'T-SQL'],
+    featured: true,
+  },
+  {
+    title: 'Fixed Deposit Treasury Management (D365 F&O)',
+    description:
+      'Designed and implemented a custom treasury management capability within Microsoft Dynamics 365 Finance & Operations. Built an FD register and linked interest schedule as AOT tables, implemented automatic FD numbering and configurable Actual/365 or 360-day interest calculations, and connected approval workflows for accrual, payment, renewal, maturity, and premature closure. Voucher references, audit history, and error logs provide full traceability.',
+    period: 'Oct 2025 – Present',
+    source: 'Gohra Technologies — Professional Project',
+    tools: ['Microsoft Dynamics 365 F&O', 'X++', 'AOT', 'Finance Workflows', 'SQL Server'],
+    featured: true,
+  },
+  {
+    title: 'Data Management & BI Pipeline',
+    description:
+      'End-to-end data management and BI project at Data Gyan: consolidated B2B customer data from multiple sources into a SQL Server master dataset, applied Python/pandas for deduplication and standardisation, built DAX-powered Power BI reports for marketing analytics, and documented data assets using DAMA-DMBOK governance principles. Delivered 98%+ master-data accuracy across 5,000+ records.',
+    period: 'Oct 2025 – Feb 2026',
+    source: 'Data Gyan, Bengaluru — Internship Project',
+    tools: ['SQL Server', 'Power BI', 'DAX', 'Power Query', 'Python', 'pandas', 'Excel', 'Google Sheets'],
     featured: true,
   },
   {
     title: 'EdTech App Market Analysis',
     description:
-      'Analyzed EdTech mobile app market data (installs, ratings, reviews) through a full analytics pipeline covering data cleaning, EDA, SQL insights, and K-Means ML clustering. Applied K-Means clustering to segment apps into 3 performance tiers — identifying top performers like Duolingo and BYJU\'S. Built an interactive Power BI dashboard visualizing installs, scores, content ratings, and release trends.',
+      "Analysed EdTech mobile app market data (installs, ratings, reviews) through a full analytics pipeline covering data cleaning, exploratory data analysis, SQL insights, and K-Means clustering. Applied K-Means to segment apps into three performance tiers — identifying top performers like Duolingo and BYJU'S. Built an interactive Power BI dashboard visualising installs, scores, content ratings, and release trends.",
     period: 'Ongoing',
     source: 'Personal Project',
-    tools: ['Python', 'Pandas', 'NumPy', 'SQL Server', 'Power BI', 'K-Means'],
+    tools: ['Python', 'pandas', 'NumPy', 'SQL Server', 'Power BI', 'K-Means'],
     github: 'https://github.com/bhagabatabrahma0106-dotcom/EdTech-Analysis',
-    featured: true,
+    featured: false,
   },
 ];
 
-// ─── Skills ────────────────────────────────────────────────────
+// Skills
 export const skillCategories: SkillCategory[] = [
   {
-    category: 'SQL & Databases',
-    icon: '🗃️',
+    category: 'Business Intelligence & Visualisation',
+    icon: 'chart',
     color: 'cyan',
-    items: ['SQL Server', 'DDL / DML', 'Joins & Subqueries', 'Aggregations', 'Data Validation', 'ETL Scripting', 'Query Profiling'],
+    items: [
+      'Microsoft Power BI',
+      'DAX Measures & Calculated Columns',
+      'Power Query / M',
+      'Data Modelling',
+      'Interactive Dashboards',
+      'KPI Reporting',
+    ],
   },
   {
-    category: 'Python & Analytics',
-    icon: '🐍',
+    category: 'SQL & Databases',
+    icon: 'database',
     color: 'purple',
-    items: ['Python', 'Pandas', 'NumPy', 'Data Cleaning', 'Exploratory Analysis', 'Statistical Analysis', 'K-Means Clustering'],
+    items: [
+      'Microsoft SQL Server',
+      'T-SQL',
+      'DDL / DML / DCL',
+      'JOINs, CTEs & Window Functions',
+      'Stored Procedures',
+      'Query Optimisation',
+      'Data Validation Scripts',
+    ],
   },
   {
-    category: 'Data Governance & ERP',
-    icon: '🛡️',
+    category: 'Python & Data Processing',
+    icon: 'python',
     color: 'emerald',
-    items: ['Collibra', 'Metadata Management', 'Business Glossary', 'Data Lineage', 'Data Quality', 'Microsoft Dynamics 365 F&O', 'SSRS', 'X++ (Basic)'],
+    items: [
+      'Python',
+      'pandas',
+      'NumPy',
+      'Data Cleaning & Deduplication',
+      'Exploratory Analysis',
+      'Basic ETL Scripting',
+      'X++ Customisation',
+    ],
   },
   {
-    category: 'BI & Reporting',
-    icon: '📊',
+    category: 'Excel & Google Sheets',
+    icon: 'sheets',
     color: 'orange',
-    items: ['Tableau', 'Power BI', 'MS Excel (VLOOKUP, Pivot)', 'Google Sheets', 'PowerPoint', 'DAX (Basic)', 'Report Design'],
+    items: [
+      'VLOOKUP / XLOOKUP',
+      'SUMIFS',
+      'PivotTables & Power Pivot',
+      'Conditional Formatting',
+      'Google Sheets QUERY',
+      'ARRAYFORMULA',
+      'Data Validation',
+    ],
   },
   {
-    category: 'Concepts & Practices',
-    icon: '⚙️',
+    category: 'Data Governance',
+    icon: 'shield',
     color: 'pink',
-    items: ['ETL Pipelines', 'Data Warehousing', 'Data Quality Management', 'Business Requirements', 'Root Cause Analysis', 'Git / GitHub'],
+    items: [
+      'DAMA-DMBOK Principles',
+      'Data Stewardship',
+      'Metadata Management',
+      'Data Lineage',
+      'Business Glossary & Cataloguing',
+      'Data Quality',
+      'Data Lifecycle Management',
+    ],
+  },
+  {
+    category: 'Tools & Platforms',
+    icon: 'tools',
+    color: 'indigo',
+    items: [
+      'D365 Finance & Operations',
+      'Power BI Desktop',
+      'SQL Server Management Studio',
+      'Microsoft Excel',
+      'Google Sheets',
+      'Python / VS Code',
+      'Git & GitHub',
+    ],
   },
 ];
 
-// ─── Core Competencies ─────────────────────────────────────────
+// Core Competencies
 export const coreCompetencies = [
+  'Data Profiling & Cleaning',
+  'Power BI Development',
+  'T-SQL Authoring',
   'Stakeholder Communication',
-  'Business Requirements Gathering',
-  'Analytical Thinking',
-  'Attention to Detail',
-  'Team Collaboration',
+  'Data Governance (DAMA-DMBOK)',
   'Root Cause Analysis',
+  'Business Requirements Gathering',
+  'Attention to Detail',
 ];
 
-// ─── Certifications ────────────────────────────────────────────
+// Certifications & Professional Development
 export const certifications: Certification[] = [
   {
-    title: 'Collibra Data Governance & Data Catalog',
-    issuer: 'Collibra Platform',
-    date: 'Completed',
+    title: 'Power BI & DAX — Power Query, Data Modelling & KPI Design',
+    issuer: 'Applied through project delivery at Data Gyan',
+    date: '2024 – 2025',
     color: 'cyan',
-  },
-  {
-    title: 'Data Management Internship Program',
-    issuer: 'Data Gyan, Bengaluru',
-    date: 'Oct 2024 – Feb 2025',
-    color: 'purple',
   },
   {
     title: 'SQL for Data Analysis',
-    issuer: 'SQL Server – Hands-On Practice',
-    date: 'Completed',
-    color: 'emerald',
-  },
-];
-
-// ─── Services ──────────────────────────────────────────────────
-export const services: Service[] = [
-  {
-    title: 'Data Analytics & Reporting',
-    description: 'End-to-end analytics pipelines — data acquisition, cleaning, transformation, and BI dashboards using SQL, Python, Tableau, and Power BI.',
-    icon: '📊',
-    color: 'cyan',
-  },
-  {
-    title: 'Data Governance Consulting',
-    description: 'Collibra-based governance workflows, metadata management, business glossary creation, data lineage mapping, and stewardship policy implementation.',
-    icon: '🛡️',
+    issuer: 'JOINs, Window Functions, CTEs, Stored Procedures & Validation — Microsoft SQL Server',
+    date: '2024 – 2025',
     color: 'purple',
   },
   {
-    title: 'ETL Pipeline Development',
-    description: 'Building and optimizing SQL-based ETL scripts to consolidate data from multiple sources into unified, validated master datasets.',
-    icon: '🔄',
+    title: 'Python for Data Analysis',
+    issuer: 'pandas / NumPy, Data Cleaning & CSV Automation',
+    date: '2024 – 2025',
     color: 'emerald',
   },
   {
-    title: 'Dashboard Development',
-    description: 'Designing interactive dashboards in Tableau and Power BI to communicate key business insights and reduce manual reporting time.',
-    icon: '📈',
+    title: 'Data Governance Fundamentals',
+    issuer: 'DAMA-DMBOK, Stewardship, Metadata, Lineage & Cataloguing — Data Gyan',
+    date: '2024 – 2025',
     color: 'orange',
   },
   {
-    title: 'ERP Data Analysis',
-    description: 'Microsoft Dynamics 365 F&O data analysis, SSRS report development, and custom queries using AOT, QBDS, and X++ basics.',
-    icon: '🏢',
+    title: 'Google Sheets Advanced Analytics',
+    issuer: 'QUERY, ARRAYFORMULA, Data Validation & Pivot Tables — Self-directed',
+    date: 'Ongoing',
     color: 'pink',
   },
   {
-    title: 'Data Quality Management',
-    description: 'Profiling, validation, deduplication, and reconciliation of large-scale datasets — improving accuracy and reliability for business-critical decisions.',
-    icon: '✅',
+    title: 'Database Management Systems — Grade A',
+    issuer: 'B.Tech Coursework, BPUT Odisha',
+    date: '2024',
     color: 'indigo',
   },
 ];
 
-// ─── Statistics ────────────────────────────────────────────────
-export const statistics: Statistic[] = [
-  { value: 1, suffix: '+', label: 'Year Experience', icon: '🏆' },
-  { value: 10000, suffix: '+', label: 'Records Processed', icon: '📦' },
-  { value: 5, suffix: '+', label: 'BI Dashboards', icon: '📊' },
-  { value: 500, suffix: '+', label: 'Quality Issues Resolved', icon: '✅' },
+// Services
+export const services: Service[] = [
+  {
+    title: 'Data Analytics & Reporting',
+    description:
+      'End-to-end analytics pipelines — data profiling, cleaning, transformation, and interactive BI dashboards using SQL Server, Python/pandas, and Power BI.',
+    icon: 'chart',
+    color: 'cyan',
+  },
+  {
+    title: 'Power BI Dashboard Development',
+    description:
+      'Designing and publishing interactive Power BI reports with DAX measures, Power Query transformations, and data-model optimisation for business stakeholders.',
+    icon: 'bar',
+    color: 'purple',
+  },
+  {
+    title: 'SQL Development & Query Optimisation',
+    description:
+      'Authoring T-SQL scripts, CTEs, stored procedures, and validation queries against Microsoft SQL Server for reporting, ETL, and data-quality workflows.',
+    icon: 'database',
+    color: 'emerald',
+  },
+  {
+    title: 'Data Governance Consulting',
+    description:
+      'Implementing DAMA-DMBOK-aligned governance: metadata management, business glossary creation, data lineage mapping, and data-quality frameworks.',
+    icon: 'shield',
+    color: 'orange',
+  },
+  {
+    title: 'D365 F&O Development & Analysis',
+    description:
+      'Microsoft Dynamics 365 Finance & Operations customisation using X++ and AOT — translating finance and treasury business requirements into maintainable ERP functionality.',
+    icon: 'gear',
+    color: 'pink',
+  },
+  {
+    title: 'Data Quality Management',
+    description:
+      'Profiling, validation, deduplication, and reconciliation of large-scale datasets — improving master-data accuracy for business-critical reporting and decisions.',
+    icon: 'check',
+    color: 'indigo',
+  },
 ];
 
-// ─── Testimonials ──────────────────────────────────────────────
+// Statistics
+export const statistics: Statistic[] = [
+  { value: 5000, suffix: '+', label: 'Records Profiled & Segmented', icon: 'records' },
+  { value: 3, suffix: '', label: 'Power BI Reports Published', icon: 'chart' },
+  { value: 20, suffix: '+', label: 'T-SQL Queries Authored', icon: 'database' },
+  { value: 98, suffix: '%', label: 'Master Data Accuracy', icon: 'check' },
+];
+
+// Testimonials
 export const testimonials: Testimonial[] = [
   {
-    name: 'Mentor – Data Gyan',
+    name: 'Mentor — Data Gyan',
     role: 'Senior Data Analyst',
     company: 'Data Gyan, Bengaluru',
-    text: 'Bhagabata demonstrated exceptional attention to detail in data validation and ETL scripting. His ability to quickly learn Collibra and apply governance workflows in a real-world setting was impressive for a fresher.',
+    text: 'Bhagabata demonstrated exceptional attention to detail in data validation and T-SQL scripting. His ability to apply data governance principles in a real-world B2B analytics project and achieve 98%+ master-data accuracy was impressive for an intern.',
     avatar: 'DG',
   },
   {
     name: 'Technical Lead',
     role: 'D365 F&O Technical Trainer',
-    company: 'Ghora Technologies',
-    text: 'Bhagabata showed strong analytical thinking and quickly grasped complex D365 F&O concepts. His SQL skills and understanding of enterprise data flows were well above the training cohort average.',
+    company: 'Gohra Technologies',
+    text: 'Bhagabata showed strong analytical thinking and quickly grasped complex D365 F&O concepts. His SQL skills and understanding of enterprise finance workflows were well above the training cohort average.',
     avatar: 'GT',
   },
 ];
 
-// ─── Languages ─────────────────────────────────────────────────
+// Languages
 export const languages = [
   { name: 'Odia', proficiency: 'Native / Mother Tongue' },
   { name: 'English', proficiency: 'Professional Working Proficiency' },
-  { name: 'Hindi', proficiency: 'Professional Working Proficiency' },
 ];
 
-// ─── Achievements ──────────────────────────────────────────────
+// Achievements
 export const achievements = [
-  'Maintained a strong 80% academic score throughout B.Tech, demonstrating consistent excellence.',
-  'Successfully completed a full-cycle Data Management project during internship — from raw data acquisition to dashboard-ready insights.',
-  'Earned hands-on Collibra platform expertise covering Data Governance workflows and Data Catalog management.',
-  'Independently built a consolidated master dataset in SQL Server combining 8+ source categories, reducing data fragmentation and enabling unified business reporting.',
+  'Validated six data-quality issue categories using pre- and post-load SQL checks, achieving 98%+ master-data accuracy across 5,000+ B2B customer records.',
+  'Removed 300+ duplicate records and standardised multi-source data using Python/pandas before SQL Server loading.',
+  'Built and published three interactive Power BI reports with DAX and Power Query, delivering actionable marketing analytics insights to stakeholders at Data Gyan.',
+  'Developed a custom Fixed Deposit Treasury Management module in Microsoft Dynamics 365 F&O using X++ — connecting FD lifecycle, approval workflows, and audit traceability.',
+];
+
+// Professional Interests
+export const professionalInterests = [
+  'Data storytelling and dashboard design',
+  'Open data projects and SQL query challenges',
+  'Data governance standards, DAMA-DMBOK, and data mesh architecture',
 ];

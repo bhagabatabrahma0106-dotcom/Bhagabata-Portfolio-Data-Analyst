@@ -15,7 +15,7 @@ export default function Footer() {
         <div className="text-center md:text-left">
           <div className="font-heading font-black text-lg text-gradient mb-1">BHAGABATA BRAHMA</div>
           <div className="text-sm text-white/40">
-            Data Analyst · Data Governance Specialist · Class of 2026
+            Data Analyst · Power BI Developer · Class of 2026
           </div>
         </div>
 
@@ -66,3 +66,4 @@ export default function Footer() {
     </footer>
   );
 }
+

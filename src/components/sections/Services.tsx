@@ -15,22 +15,28 @@ const themeMap: Record<string, { accent: string; second: string }> = {
 };
 
 const iconMap: Record<string, React.ReactNode> = {
-  'Data Analytics & Reporting':      <BarChart2 size={20} />,
-  'Data Governance Consulting':      <ShieldCheck size={20} />,
-  'ETL Pipeline Development':        <RefreshCw size={20} />,
-  'Dashboard Development':           <LayoutDashboard size={20} />,
-  'ERP Data Analysis':               <Database size={20} />,
-  'Data Quality Management':         <CheckSquare size={20} />,
+  'Data Analytics & Reporting':          <BarChart2 size={20} />,
+  'Power BI Dashboard Development':      <LayoutDashboard size={20} />,
+  'Dashboard Development':               <LayoutDashboard size={20} />,
+  'SQL Development & Query Optimisation': <Database size={20} />,
+  'ETL Pipeline Development':            <RefreshCw size={20} />,
+  'Data Governance Consulting':          <ShieldCheck size={20} />,
+  'D365 F&O Development & Analysis':     <Database size={20} />,
+  'ERP Data Analysis':                   <Database size={20} />,
+  'Data Quality Management':             <CheckSquare size={20} />,
 };
 
 // Matching bullet highlights per service
 const bulletMap: Record<string, string[]> = {
-  'Data Analytics & Reporting':    ['SQL-driven pipelines', 'Tableau & Power BI dashboards', 'Python EDA & insights'],
-  'Data Governance Consulting':    ['Collibra platform', 'Metadata & lineage mapping', 'Policy & glossary mgmt'],
-  'ETL Pipeline Development':      ['50+ SQL ETL scripts', 'Multi-source consolidation', 'Data validation & cleaning'],
-  'Dashboard Development':         ['Interactive BI dashboards', 'KPI storytelling', '~30% less manual reporting'],
-  'ERP Data Analysis':             ['D365 F&O analysis', 'SSRS report development', 'AOT/QBDS queries'],
-  'Data Quality Management':       ['500+ issues resolved', 'Dedup & reconciliation', '~25% accuracy improvement'],
+  'Data Analytics & Reporting':          ['SQL-driven pipelines', 'Power BI dashboards', 'Python/pandas EDA'],
+  'Power BI Dashboard Development':      ['Interactive dashboards', 'DAX measures & modelling', 'KPI storytelling'],
+  'Dashboard Development':               ['Interactive dashboards', 'DAX measures & modelling', 'KPI storytelling'],
+  'SQL Development & Query Optimisation': ['20+ T-SQL queries', 'Multi-source consolidation', 'Pre & post-load checks'],
+  'ETL Pipeline Development':            ['20+ T-SQL queries', 'Multi-source consolidation', 'Pre & post-load checks'],
+  'Data Governance Consulting':          ['DAMA-DMBOK standards', '15+ business glossary terms', 'Asset metadata & lineage'],
+  'D365 F&O Development & Analysis':     ['X++ & AOT customization', 'FD Treasury lifecycle', 'Approval workflows & audit'],
+  'ERP Data Analysis':                   ['X++ & AOT customization', 'FD Treasury lifecycle', 'Approval workflows & audit'],
+  'Data Quality Management':             ['98%+ accuracy achieved', '300+ duplicates removed', '6 data quality categories'],
 };
 
 export default function Services() {
@@ -99,7 +105,7 @@ export default function Services() {
                       style={{ background: `${theme.accent}14`, border: `1px solid ${theme.accent}28` }}
                       animate={{ boxShadow: isHovered ? `0 0 20px ${theme.accent}28` : 'none' }}
                     >
-                      <span style={{ color: theme.accent }}>{iconMap[service.title]}</span>
+                      <span style={{ color: theme.accent }}>{iconMap[service.title] || <BarChart2 size={20} />}</span>
                     </motion.div>
                     <span
                       className="text-[11px] font-mono font-bold px-2 py-1 rounded-full"

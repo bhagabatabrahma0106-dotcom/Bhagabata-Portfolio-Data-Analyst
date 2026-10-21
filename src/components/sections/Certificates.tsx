@@ -11,6 +11,7 @@ const themeMap: Record<string, { accent: string; second: string; badge: string }
   emerald: { accent: '#10B981', second: '#14B8A6', badge: 'Certified' },
   orange:  { accent: '#F59E0B', second: '#F97316', badge: 'Completed' },
   pink:    { accent: '#EC4899', second: '#F43F5E', badge: 'Completed' },
+  indigo:  { accent: '#6366F1', second: '#8B5CF6', badge: 'Completed' },
 };
 
 const allCerts = [

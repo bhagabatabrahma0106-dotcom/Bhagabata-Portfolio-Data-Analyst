@@ -31,7 +31,7 @@ export default function About() {
               </div>
               <div>
                 <h3 className="font-heading text-2xl font-bold text-white">
-                  A Passionate <span className="text-gradient">Data Professional</span>
+                  Data Analyst <span className="text-gradient">&amp; Power BI Developer</span>
                 </h3>
                 <div className="text-xs text-primary font-mono mt-0.5">B.Tech Computer Science & Engineering</div>
               </div>
@@ -132,7 +132,7 @@ export default function About() {
             {/* Info tiles */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-8">
               {[
-                { label: 'CGPA', value: '80%' },
+                { label: 'CGPA', value: '8.04' },
                 { label: 'Batch', value: '2026' },
                 { label: 'Branch', value: 'CS' },
               ].map((t) => (
@@ -151,3 +151,5 @@ export default function About() {
     </section>
   );
 }
+
+

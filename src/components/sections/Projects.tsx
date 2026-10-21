@@ -21,9 +21,9 @@ import { FiGithub } from 'react-icons/fi';
 import { staggerContainer, staggerItem } from '../../animations/variants';
 import SectionTitle from '../ui/SectionTitle';
 
-/* ═══════════════════════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    ANIMATED NUMBER COUNTER
-═══════════════════════════════════════════════════════════ */
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 function CountUp({ to, suffix = '', decimals = 0 }: { to: number; suffix?: string; decimals?: number }) {
   const [count, setCount] = useState(0);
   const ref = useRef<HTMLSpanElement>(null);
@@ -44,9 +44,9 @@ function CountUp({ to, suffix = '', decimals = 0 }: { to: number; suffix?: strin
   return <span ref={ref}>{count.toFixed(decimals)}{suffix}</span>;
 }
 
-/* ═══════════════════════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    MINI POWER BI DASHBOARD — EdTech Project
-═══════════════════════════════════════════════════════════ */
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 type DashTab = 'installs' | 'ratings' | 'clusters';
 
 const EdTechDashboard = () => {
@@ -102,7 +102,7 @@ const EdTechDashboard = () => {
   return (
     <div ref={ref} className="rounded-xl overflow-hidden border border-white/10 bg-[#070B14] select-none">
 
-      {/* ── Window Chrome ── */}
+      {/* â”€â”€ Window Chrome â”€â”€ */}
       <div className="flex items-center justify-between px-3 py-2 bg-[#0C1020] border-b border-white/5">
         <div className="flex items-center gap-1.5">
           <div className="w-2.5 h-2.5 rounded-full bg-[#FF5F57]" />
@@ -122,12 +122,12 @@ const EdTechDashboard = () => {
         </div>
       </div>
 
-      {/* ── KPI Row ── */}
+      {/* â”€â”€ KPI Row â”€â”€ */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-px bg-white/[0.04] border-b border-white/5">
         {[
-          { label: 'Apps Analyzed', value: 42,  suffix: '',   dec: 0, delta: '↑ +12%',  color: '#00F5FF' },
-          { label: 'Avg Rating',    value: 4.3, suffix: '★',  dec: 1, delta: '↑ +0.4',  color: '#8B5CF6' },
-          { label: 'ML Accuracy',   value: 91,  suffix: '%',  dec: 0, delta: '↑ +3%',   color: '#10B981' },
+          { label: 'Apps Analyzed', value: 42,  suffix: '',   dec: 0, delta: 'â†‘ +12%',  color: '#00F5FF' },
+          { label: 'Avg Rating',    value: 4.3, suffix: 'â˜…',  dec: 1, delta: 'â†‘ +0.4',  color: '#8B5CF6' },
+          { label: 'ML Accuracy',   value: 91,  suffix: '%',  dec: 0, delta: 'â†‘ +3%',   color: '#10B981' },
         ].map((kpi) => (
           <div key={kpi.label} className="bg-[#070B14] px-3 py-2.5">
             <div className="text-[8.5px] font-mono text-white/25 uppercase tracking-wide mb-0.5">{kpi.label}</div>
@@ -139,7 +139,7 @@ const EdTechDashboard = () => {
         ))}
       </div>
 
-      {/* ── Tab Bar ── */}
+      {/* â”€â”€ Tab Bar â”€â”€ */}
       <div className="flex items-center gap-1 px-3 pt-2.5 pb-1">
         {tabs.map((t) => (
           <button
@@ -157,7 +157,7 @@ const EdTechDashboard = () => {
         ))}
       </div>
 
-      {/* ── Chart Area ── */}
+      {/* â”€â”€ Chart Area â”€â”€ */}
       <div className="px-3 pb-3 pt-1 min-h-[110px]">
         <AnimatePresence mode="wait">
 
@@ -204,7 +204,7 @@ const EdTechDashboard = () => {
                             className="absolute right-1 top-1/2 -translate-y-1/2 px-1.5 py-0.5 rounded text-[8px] font-mono font-bold z-10"
                             style={{ background: d.color, color: '#000' }}
                           >
-                            {d.installs}M · ★{d.rating}
+                            {d.installs}M · â˜…{d.rating}
                           </motion.div>
                         )}
                       </AnimatePresence>
@@ -232,7 +232,7 @@ const EdTechDashboard = () => {
               className="pt-1"
             >
               <div className="text-[8.5px] font-mono text-white/20 uppercase tracking-widest mb-2">
-                Average Rating Trend (Jan–Jul)
+                Average Rating Trend (Janâ€“Jul)
               </div>
               <div className="relative h-[80px]">
                 <svg width="100%" height="100%" viewBox="0 0 260 80" preserveAspectRatio="none">
@@ -391,9 +391,9 @@ const EdTechDashboard = () => {
   );
 };
 
-/* ═══════════════════════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    DATA PIPELINE VISUAL — Data Management Project
-═══════════════════════════════════════════════════════════ */
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 const PipelineVisual = () => {
   const [activeStage, setActiveStage] = useState<number | null>(null);
   const [flow, setFlow] = useState(false);
@@ -541,7 +541,7 @@ const PipelineVisual = () => {
       <div className="mt-3 grid grid-cols-1 sm:grid-cols-3 gap-1.5">
         {[
           { label: 'Records',     value: 10000, suffix: '+', color: '#00F5FF' },
-          { label: 'Quality ↑',   value: 25,    suffix: '%', color: '#10B981' },
+          { label: 'Quality â†‘',   value: 25,    suffix: '%', color: '#10B981' },
           { label: 'Issues Fixed',value: 500,   suffix: '+', color: '#8B5CF6' },
         ].map((m) => (
           <div
@@ -560,9 +560,9 @@ const PipelineVisual = () => {
   );
 };
 
-/* ═══════════════════════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    PROJECT CARD
-═══════════════════════════════════════════════════════════ */
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 interface ProjCardProps {
   title: string;
   description: string;
@@ -723,18 +723,16 @@ const ProjectCard = ({ title, description, period, source, tools, featured, gith
   );
 };
 
-/* ═══════════════════════════════════════════════════════════
-   MAIN SECTION
-═══════════════════════════════════════════════════════════ */
+/* ── MAIN SECTION ── */
 export default function Projects() {
   const projects = [
     {
-      title: 'Data Management & Governance Pipeline',
+      title: 'Data Management & BI Pipeline',
       description:
-        'Designed an end-to-end data management pipeline, sourcing raw data from 8+ channels (LinkedIn, conferences, vendor lists) and consolidating into a structured master dataset via SQL Server. Implemented Data Governance workflows using Collibra — policy management, asset onboarding, business glossary creation, and data lineage mapping. Reduced reporting fragmentation across 8+ source categories and improved data quality by ~25%.',
-      period: 'Oct 2024 – Feb 2025',
-      source: 'Data Gyan, Bengaluru',
-      tools: ['SQL Server', 'MS Excel', 'Tableau', 'Collibra', 'Google Sheets'],
+        'Consolidated 5,000+ B2B customer records from LinkedIn, conferences, and vendor lists into a SQL Server master dataset. Authored 20+ T-SQL queries, applied Python/pandas to remove 300+ duplicates, and validated six data-quality categories — achieving 98%+ master-data accuracy. Built three Power BI reports using DAX and Power Query. Documented 15+ business glossary terms and metadata for 12 data assets using DAMA-DMBOK principles.',
+      period: 'Oct 2025 – Feb 2026',
+      source: 'Data Gyan, Bengaluru — Internship',
+      tools: ['SQL Server', 'Power BI', 'DAX', 'Power Query', 'Python', 'pandas', 'Excel'],
       featured: true,
       accent: '#00F5FF',
       second: '#8B5CF6',
@@ -745,10 +743,10 @@ export default function Projects() {
     {
       title: 'EdTech App Market Analysis',
       description:
-        'Analyzed EdTech mobile app market data (installs, ratings, reviews) for 42 apps through a full analytics pipeline covering data cleaning, EDA, SQL insights, and K-Means ML clustering. Segmented apps into 3 performance tiers — identifying top performers like Duolingo (500M installs, ★4.7) and BYJU\'S. Built an interactive Power BI dashboard visualizing installs, scores, content ratings, and release trends.',
+        "Analysed EdTech mobile app market data (installs, ratings, reviews) for 42 apps through a full analytics pipeline covering data cleaning, EDA, SQL insights, and K-Means clustering. Segmented apps into 3 performance tiers — identifying top performers like Duolingo and BYJU'S. Built an interactive Power BI dashboard visualising installs, scores, content ratings, and release trends.",
       period: 'Ongoing',
       source: 'Personal Project',
-      tools: ['Python', 'Pandas', 'NumPy', 'SQL Server', 'Power BI', 'K-Means'],
+      tools: ['Python', 'pandas', 'NumPy', 'SQL Server', 'Power BI', 'K-Means'],
       featured: true,
       github: 'https://github.com/bhagabatabrahma0106-dotcom/EdTech-Analysis',
       accent: '#8B5CF6',
@@ -756,6 +754,95 @@ export default function Projects() {
       icon: <BarChart2 size={16} />,
       viz: <EdTechDashboard />,
       tag: 'ML + BI',
+    },
+    {
+      title: 'Pizza Sales Performance Analysis',
+      description:
+        'Analysed 48,620 transaction rows and 21,350 distinct orders (2015) using T-SQL to surface daily, hourly, and monthly demand patterns and best/worst-selling products. Total revenue: \.86K | Avg order value: \.31 | Pizzas sold: 49,574. Combined with a filterable Power BI dashboard for promotional planning and menu performance evaluation.',
+      period: '2025',
+      source: 'Personal Project',
+      tools: ['Microsoft SQL Server', 'Power BI', 'DAX', 'T-SQL'],
+      featured: true,
+      accent: '#F59E0B',
+      second: '#F97316',
+      icon: <TrendingUp size={16} />,
+      viz: (
+        <div className="rounded-xl p-4 bg-amber-500/5 border border-amber-500/10">
+          <div className="text-[9px] font-mono text-amber-400/60 uppercase tracking-widest mb-3">Key Metrics</div>
+          <div className="grid grid-cols-2 gap-2">
+            {[
+              { label: 'Total Revenue', value: '\.86K' },
+              { label: 'Distinct Orders', value: '21,350' },
+              { label: 'Avg Order Value', value: '\.31' },
+              { label: 'Pizzas Sold', value: '49,574' },
+            ].map((m) => (
+              <div key={m.label} className="rounded-lg p-2 bg-amber-500/8 border border-amber-500/15 text-center">
+                <div className="text-sm font-bold text-amber-400">{m.value}</div>
+                <div className="text-[9px] font-mono text-white/30 mt-0.5">{m.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ),
+      tag: 'SQL + Power BI',
+    },
+    {
+      title: 'E-Commerce Order Performance Analysis',
+      description:
+        'Cleaned and standardised 199 raw order lines in Excel — checking inconsistent categories, invalid dates, non-numeric prices, missing values, and outliers — before SQL Server loading. Authored T-SQL KPI queries for revenue, order volume, AOV, returns, cancellations, and repeat customers. Built Power BI views for product, category, and country trends; monthly performance; and payment mix.',
+      period: '2025',
+      source: 'Personal Project',
+      tools: ['Excel', 'Microsoft SQL Server', 'Power BI', 'DAX', 'T-SQL'],
+      featured: true,
+      accent: '#10B981',
+      second: '#14B8A6',
+      icon: <Activity size={16} />,
+      viz: (
+        <div className="rounded-xl p-4 bg-emerald-500/5 border border-emerald-500/10">
+          <div className="text-[9px] font-mono text-emerald-400/60 uppercase tracking-widest mb-3">Analysis Pipeline</div>
+          <div className="space-y-2">
+            {[
+              { step: '01', label: 'Excel Data Cleaning', detail: '199 raw order lines standardised' },
+              { step: '02', label: 'SQL KPI Queries', detail: 'Revenue, AOV, returns & repeat customers' },
+              { step: '03', label: 'Power BI Dashboard', detail: 'Product, category & country views' },
+            ].map((s) => (
+              <div key={s.step} className="flex gap-3 items-start">
+                <span className="text-[9px] font-mono text-emerald-400/50 mt-0.5">{s.step}</span>
+                <div>
+                  <div className="text-[10px] font-semibold text-emerald-300">{s.label}</div>
+                  <div className="text-[9px] font-mono text-white/30">{s.detail}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ),
+      tag: 'Excel + SQL + BI',
+    },
+    {
+      title: 'Fixed Deposit Treasury Management',
+      description:
+        'Built a custom FD Treasury Management capability in Microsoft Dynamics 365 Finance & Operations using X++. Covers FD register, interest schedule, auto-numbering, Actual/365 or 360-day interest calculations, and approval workflows for accrual, payment, renewal, maturity, and premature closure. Full traceability via voucher references, audit history, and error logs.',
+      period: 'Oct 2025 – Present',
+      source: 'Gohra Technologies — Professional Project',
+      tools: ['D365 F&O', 'X++', 'AOT', 'Finance Workflows', 'SQL Server'],
+      featured: true,
+      accent: '#6366F1',
+      second: '#8B5CF6',
+      icon: <Shield size={16} />,
+      viz: (
+        <div className="rounded-xl p-4 bg-indigo-500/5 border border-indigo-500/10">
+          <div className="text-[9px] font-mono text-indigo-400/60 uppercase tracking-widest mb-3">FD Lifecycle Stages</div>
+          <div className="flex flex-wrap gap-1.5">
+            {['FD Registration', 'Interest Accrual', 'Payment Processing', 'Renewal', 'Maturity', 'Premature Closure', 'Audit Trail'].map((stage) => (
+              <span key={stage} className="text-[9px] font-mono px-2 py-0.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300/80">
+                {stage}
+              </span>
+            ))}
+          </div>
+        </div>
+      ),
+      tag: 'D365 F&O',
     },
   ];
 
