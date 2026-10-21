@@ -1,33 +1,45 @@
-import React, { useEffect, useState } from 'react';
+﻿import React, { useEffect, useState } from 'react';
 import Navbar from './components/layout/Navbar';
 import Loader from './components/layout/Loader';
 import Hero from './components/sections/Hero';
-import About from './components/sections/About';
+import Statistics from './components/sections/Statistics';
+import Projects from './components/sections/Projects';
 import Experience from './components/sections/Experience';
 import Skills from './components/sections/Skills';
-import Projects from './components/sections/Projects';
+import About from './components/sections/About';
 import Certificates from './components/sections/Certificates';
 import Services from './components/sections/Services';
-import Statistics from './components/sections/Statistics';
 import SkillLab from './components/sections/SkillLab';
 import Contact from './components/sections/Contact';
 import Footer from './components/layout/Footer';
+import MessengerWidget from './components/layout/MessengerWidget';
 import ParticlesBackground from './components/ui/ParticlesBackground';
 
 function App() {
   const [loading, setLoading] = useState(true);
   const [activeSection, setActiveSection] = useState('home');
 
-  // Finish loader after 2.5s
+  // Finish loader after 2.2s
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 2600);
+    const timer = setTimeout(() => setLoading(false), 2200);
     return () => clearTimeout(timer);
   }, []);
 
   // Track active section on scroll
   useEffect(() => {
     if (loading) return;
-    const sections = ['home', 'about', 'experience', 'skills', 'projects', 'certificates', 'services', 'skilllab', 'contact'];
+    const sections = [
+      'home',
+      'highlights',
+      'projects',
+      'experience',
+      'skills',
+      'about',
+      'certificates',
+      'services',
+      'skilllab',
+      'contact',
+    ];
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -37,7 +49,7 @@ function App() {
           }
         });
       },
-      { threshold: 0.3, rootMargin: '-80px 0px 0px 0px' }
+      { threshold: 0.25, rootMargin: '-80px 0px 0px 0px' }
     );
 
     sections.forEach((id) => {
@@ -51,33 +63,55 @@ function App() {
   if (loading) return <Loader />;
 
   return (
-    <div className="relative min-h-screen bg-dark text-white overflow-x-hidden">
+    <div className="relative min-h-screen bg-dark text-white overflow-x-hidden selection:bg-primary/20 selection:text-white">
       {/* Ambient background particles */}
       <ParticlesBackground />
 
-      {/* Global ambient blobs */}
-      <div className="fixed top-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-[120px] pointer-events-none z-0" />
-      <div className="fixed bottom-1/4 right-1/4 w-80 h-80 bg-secondary/5 rounded-full blur-[100px] pointer-events-none z-0" />
+      {/* Global ambient glows */}
+      <div className="fixed top-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-[140px] pointer-events-none z-0" />
+      <div className="fixed bottom-1/4 right-1/4 w-80 h-80 bg-secondary/5 rounded-full blur-[120px] pointer-events-none z-0" />
 
       {/* Navigation */}
       <Navbar activeSection={activeSection} setActiveSection={setActiveSection} />
 
-      {/* Page content */}
+      {/* Page content in strategic studio sequence */}
       <main className="relative z-10">
+        {/* Section 1: Hero & Introduction */}
         <Hero />
-        <About />
-        <Experience />
-        <Skills />
-        <Projects />
-        <Certificates />
-        <Services />
-        <SkillLab />
+
+        {/* Section 2: Professional Highlights (Proof of Work) */}
         <Statistics />
+
+        {/* Section 3: Selected Projects */}
+        <Projects />
+
+        {/* Section 4: Professional Experience */}
+        <Experience />
+
+        {/* Section 5: Technical Capabilities & Skills */}
+        <Skills />
+
+        {/* Section 6: Education & Qualifications */}
+        <About />
+
+        {/* Section 7: Professional Development & Certifications */}
+        <Certificates />
+
+        {/* Section 8: Services */}
+        <Services />
+
+        {/* Section 9: Interactive Skill Lab */}
+        <SkillLab />
+
+        {/* Section 10: Contact & Closing Studio Invitation */}
         <Contact />
       </main>
 
       {/* Footer */}
       <Footer />
+
+      {/* Floating Messenger & Conversation Widget (Inspired by onlines.com.ar) */}
+      <MessengerWidget />
     </div>
   );
 }

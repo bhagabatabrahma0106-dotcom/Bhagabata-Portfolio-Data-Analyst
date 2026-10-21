@@ -1,54 +1,64 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Send, Mail, Phone, MapPin, CheckCircle2,
-  ArrowUpRight, Loader2, MessageSquare,
-  Sparkles, Clock,
+  ArrowUpRight, MessageSquare, Sparkles, Clock
 } from 'lucide-react';
 import { FiGithub } from 'react-icons/fi';
-import { FaLinkedinIn } from 'react-icons/fa';
+import { FaLinkedinIn, FaWhatsapp } from 'react-icons/fa';
 import { personalInfo } from '../../constants/data';
-import SectionTitle from '../ui/SectionTitle';
 
 const ACCENT = '#00F5FF';
 const SECOND = '#8B5CF6';
 
-const inputBase =
-  'w-full bg-[#070B14] border border-white/8 focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/20 rounded-xl px-4 py-3 text-white text-sm placeholder-white/20 outline-none transition-all duration-200 font-mono';
-
 export default function Contact() {
-  const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' });
-  const [submitted, setSubmitted] = useState(false);
-  const [submitting, setSubmitting] = useState(false);
-  const [focused, setFocused] = useState<string | null>(null);
+  const [form, setForm] = useState({ name: '', email: '', message: '' });
+  const [sentAction, setSentAction] = useState<string | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSendEmail = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!form.name || !form.email || !form.message) return;
-    setSubmitting(true);
-    setTimeout(() => {
-      setSubmitting(false);
-      setSubmitted(true);
-      setTimeout(() => setSubmitted(false), 7000);
-      setForm({ name: '', email: '', phone: '', message: '' });
-    }, 1800);
+    const subject = `Portfolio Inquiry from ${form.name || 'Visitor'}`;
+    const body = `Hi Bhagabata,\n\nName: ${form.name}\nEmail: ${form.email}\n\nMessage:\n${form.message}\n`;
+    window.open(`mailto:${personalInfo.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`, '_blank');
+    setSentAction('Email draft opened in your mail app!');
+    setTimeout(() => setSentAction(null), 6000);
+  };
+
+  const handleSendWhatsApp = (e: React.FormEvent) => {
+    e.preventDefault();
+    const cleanPhone = personalInfo.phone.replace(/[^0-9]/g, '');
+    const text = `Hi Bhagabata, I'm ${form.name || 'reaching out from your portfolio'}.\n${form.message ? `Message: ${form.message}` : ''}`;
+    window.open(`https://wa.me/${cleanPhone}?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
+    setSentAction('WhatsApp chat opened with your message!');
+    setTimeout(() => setSentAction(null), 6000);
+  };
+
+  const openMessenger = () => {
+    window.dispatchEvent(new CustomEvent('open-messenger'));
   };
 
   const contactItems = [
     {
       icon: <Mail size={18} />,
-      label: 'Email',
+      label: 'Email Direct',
       value: personalInfo.email,
       href: `mailto:${personalInfo.email}`,
       accent: '#00F5FF',
     },
     {
+      icon: <FaWhatsapp size={18} />,
+      label: 'WhatsApp Chat',
+      value: personalInfo.phone,
+      href: `https://wa.me/${personalInfo.phone.replace(/[^0-9]/g, '')}?text=Hi%20Bhagabata,%20I%20would%20like%20to%20connect!`,
+      accent: '#10B981',
+    },
+    {
       icon: <Phone size={18} />,
-      label: 'Phone',
+      label: 'Phone Call',
       value: personalInfo.phone,
       href: `tel:${personalInfo.phone}`,
       accent: '#8B5CF6',
@@ -58,373 +68,240 @@ export default function Contact() {
       label: 'Location',
       value: personalInfo.location,
       href: null,
-      accent: '#10B981',
-    },
-    {
-      icon: <Clock size={18} />,
-      label: 'Availability',
-      value: 'Open to full-time roles',
-      href: null,
       accent: '#F59E0B',
     },
   ];
 
-  const socialLinks = [
-    {
-      icon: <FiGithub size={18} />,
-      href: personalInfo.github,
-      label: 'GitHub',
-      accent: '#fff',
-    },
-    {
-      icon: <FaLinkedinIn size={18} />,
-      href: personalInfo.linkedin,
-      label: 'LinkedIn',
-      accent: '#0A66C2',
-    },
-    {
-      icon: <Mail size={18} />,
-      href: `mailto:${personalInfo.email}`,
-      label: 'Email',
-      accent: '#00F5FF',
-    },
-  ];
-
   return (
-    <section id="contact" className="section-padding relative overflow-hidden">
-      {/* Ambient glows */}
+    <section id="contact" className="section-padding relative overflow-hidden studio-grid">
+      {/* Background ambient accents */}
       <div
-        className="absolute bottom-0 left-1/4 w-72 h-72 md:w-[500px] md:h-[500px] rounded-full blur-[100px] md:blur-[140px] pointer-events-none"
-        style={{ background: 'radial-gradient(circle, rgba(0,245,255,0.05), transparent)' }}
+        className="absolute top-0 right-1/4 w-72 h-72 md:w-[500px] md:h-[500px] rounded-full blur-[140px] pointer-events-none"
+        style={{ background: 'radial-gradient(circle, rgba(139,92,246,0.06), transparent)' }}
       />
       <div
-        className="absolute top-0 right-1/4 w-64 h-64 md:w-[400px] md:h-[400px] rounded-full blur-[90px] md:blur-[120px] pointer-events-none"
-        style={{ background: 'radial-gradient(circle, rgba(139,92,246,0.05), transparent)' }}
+        className="absolute bottom-0 left-1/4 w-72 h-72 md:w-[500px] md:h-[500px] rounded-full blur-[140px] pointer-events-none"
+        style={{ background: 'radial-gradient(circle, rgba(0,245,255,0.05), transparent)' }}
       />
 
       <div className="section-container relative z-10">
-        <SectionTitle title="Get In Touch" subtitle="Let's Connect & Collaborate" />
+        {/* Studio Editorial Header (Inspired by onlines.com.ar Closing Invitation) */}
+        <div className="mb-14 border-b border-white/10 pb-8 text-center md:text-left flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div>
+            <div className="flex items-center justify-center md:justify-start gap-2 text-xs font-mono text-primary uppercase tracking-[0.25em] mb-2.5 font-semibold">
+              <Sparkles size={13} />
+              <span>Section 10 // Contact & Opportunities</span>
+            </div>
+            <h2 className="font-heading font-black text-3xl sm:text-5xl text-white tracking-tight leading-tight">
+              let's turn your data into <br className="hidden sm:inline" />
+              <span className="text-gradient">verified decisions.</span>
+            </h2>
+          </div>
+          <div className="flex flex-col items-center md:items-end gap-3">
+            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-xs font-mono text-emerald-400">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+              <span>Actively Interviewing · Class of 2026</span>
+            </span>
+            <button
+              onClick={openMessenger}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-primary/10 hover:bg-primary/20 border border-primary/30 text-xs font-mono text-primary transition-all cursor-pointer shadow-sm"
+            >
+              <MessageSquare size={13} />
+              <span>Open Studio Messenger</span>
+            </button>
+          </div>
+        </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 mt-16">
-
-          {/* ── LEFT PANEL ── */}
+        <div className="grid lg:grid-cols-12 gap-10 items-start">
+          {/* Left Column: Direct Communication Hub */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
+            className="lg:col-span-5 space-y-4"
+            initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: '-80px' }}
-            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
           >
-            {/* Heading */}
-            <div className="mb-8">
-              <h3 className="font-heading text-2xl font-bold text-white mb-3 leading-snug">
-                Let's{' '}
-                <span
-                  className="font-extrabold"
-                  style={{
-                    background: `linear-gradient(90deg, ${ACCENT}, ${SECOND})`,
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                  }}
-                >
-                  Build Something
-                </span>{' '}
-                Together
-              </h3>
-              <p className="text-white/45 leading-relaxed text-sm max-w-md">
-                Whether you're looking to hire a Data Analyst, collaborate on a data project,
-                or simply connect — I'd love to hear from you. I typically respond within 24 hours.
+            <div className="studio-card rounded-2xl p-6 border border-white/10">
+              <h3 className="font-heading font-bold text-lg text-white mb-2">Direct Contact Channels</h3>
+              <p className="text-xs sm:text-sm text-white/50 font-mono mb-6 leading-relaxed">
+                Reach out for full-time Data Analyst roles, Power BI dashboard development, or data governance projects.
               </p>
-            </div>
 
-            {/* Contact Info Cards */}
-            <div className="space-y-3 mb-8">
-              {contactItems.map((item) => (
-                <motion.div
-                  key={item.label}
-                  className="flex items-center gap-4 rounded-xl p-3.5 transition-all duration-200 group cursor-default"
-                  style={{
-                    background: 'rgba(7,11,20,0.6)',
-                    border: '1px solid rgba(255,255,255,0.05)',
-                  }}
-                  whileHover={{
-                    borderColor: item.accent + '35',
-                    background: `${item.accent}06`,
-                  }}
-                >
-                  <div
-                    className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
-                    style={{ background: `${item.accent}14`, border: `1px solid ${item.accent}28` }}
-                  >
-                    <span style={{ color: item.accent }}>{item.icon}</span>
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <div className="text-[10px] font-mono text-white/25 uppercase tracking-widest mb-0.5">
-                      {item.label}
-                    </div>
-                    {item.href ? (
-                      <a
-                        href={item.href}
-                        className="text-sm text-white/70 font-medium hover:text-white transition-colors truncate block"
-                        style={{ fontFamily: 'monospace' }}
+              <div className="space-y-3">
+                {contactItems.map((item) => {
+                  const content = (
+                    <div
+                      className="flex items-center gap-3.5 p-3 rounded-xl bg-white/5 border border-white/8 hover:border-white/20 transition-all duration-200 group"
+                    >
+                      <div
+                        className="w-9 h-9 rounded-lg flex items-center justify-center shrink-0 border"
+                        style={{
+                          background: `${item.accent}12`,
+                          borderColor: `${item.accent}30`,
+                          color: item.accent,
+                        }}
                       >
-                        {item.value}
-                      </a>
-                    ) : (
-                      <div className="text-sm text-white/70 font-medium font-mono truncate">{item.value}</div>
-                    )}
-                  </div>
-                  {item.href && (
-                    <ArrowUpRight size={14} className="text-white/20 group-hover:text-white/50 shrink-0 transition-colors" />
-                  )}
-                </motion.div>
-              ))}
-            </div>
+                        {item.icon}
+                      </div>
+                      <div className="min-w-0 flex-1">
+                        <div className="text-[10px] font-mono text-white/40 uppercase">{item.label}</div>
+                        <div className="text-xs sm:text-sm font-semibold text-white/90 truncate group-hover:text-primary transition-colors">
+                          {item.value}
+                        </div>
+                      </div>
+                      {item.href && <ArrowUpRight size={14} className="text-white/30 group-hover:text-primary shrink-0" />}
+                    </div>
+                  );
 
-            {/* Social Links */}
-            <div>
-              <div className="text-[10px] font-mono text-white/25 uppercase tracking-widest mb-3">
-                Find me on
+                  return item.href ? (
+                    <a
+                      key={item.label}
+                      href={item.href}
+                      target={item.href.startsWith('http') ? '_blank' : undefined}
+                      rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                      className="block"
+                    >
+                      {content}
+                    </a>
+                  ) : (
+                    <div key={item.label}>{content}</div>
+                  );
+                })}
               </div>
-              <div className="flex gap-3">
-                {socialLinks.map((s) => (
-                  <motion.a
-                    key={s.label}
-                    href={s.href}
+
+              {/* Social Channels */}
+              <div className="mt-6 pt-5 border-t border-white/10 flex items-center justify-between">
+                <span className="text-xs font-mono text-white/40">Profiles</span>
+                <div className="flex items-center gap-2">
+                  <a
+                    href={personalInfo.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-mono font-semibold transition-all duration-200"
-                    style={{
-                      background: 'rgba(255,255,255,0.04)',
-                      border: '1px solid rgba(255,255,255,0.08)',
-                      color: 'rgba(255,255,255,0.5)',
-                    }}
-                    whileHover={{
-                      background: `${s.accent}14`,
-                      borderColor: s.accent + '40',
-                      color: '#fff',
-                      y: -2,
-                    }}
+                    className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-white/60 hover:text-white hover:border-primary/40 transition-colors"
+                    aria-label="GitHub"
                   >
-                    <span style={{ opacity: 0.8 }}>{s.icon}</span>
-                    {s.label}
-                  </motion.a>
-                ))}
+                    <FiGithub size={14} />
+                  </a>
+                  <a
+                    href={personalInfo.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-white/60 hover:text-white hover:border-primary/40 transition-colors"
+                    aria-label="LinkedIn"
+                  >
+                    <FaLinkedinIn size={14} />
+                  </a>
+                  <a
+                    href={`https://wa.me/${personalInfo.phone.replace(/[^0-9]/g, '')}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 hover:bg-emerald-500/20 transition-colors"
+                    aria-label="WhatsApp"
+                  >
+                    <FaWhatsapp size={14} />
+                  </a>
+                </div>
               </div>
-            </div>
-
-            {/* Response time */}
-            <div className="flex items-center gap-2 mt-8 px-3 py-2.5 rounded-xl w-fit"
-              style={{ background: 'rgba(0,245,255,0.05)', border: '1px solid rgba(0,245,255,0.15)' }}>
-              <motion.div
-                className="w-2 h-2 rounded-full bg-green-400"
-                animate={{ opacity: [1, 0.4, 1] }}
-                transition={{ repeat: Infinity, duration: 1.6 }}
-              />
-              <span className="text-[11px] font-mono text-white/40">
-                Usually responds within <span className="text-cyan-400 font-semibold">24 hours</span>
-              </span>
             </div>
           </motion.div>
 
-          {/* ── RIGHT PANEL — Form ── */}
+          {/* Right Column: Direct Pre-filled Dispatch Form */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
+            className="lg:col-span-7"
+            initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: '-80px' }}
-            transition={{ duration: 0.6, delay: 0.1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
           >
-            <div
-              className="rounded-2xl overflow-hidden"
-              style={{
-                background: 'rgba(7,11,20,0.9)',
-                border: '1px solid rgba(255,255,255,0.07)',
-                boxShadow: '0 20px 60px rgba(0,0,0,0.4)',
-              }}
-            >
-              {/* Form header */}
-              <div
-                className="flex items-center gap-3 px-6 py-4 border-b"
-                style={{ background: 'rgba(255,255,255,0.02)', borderColor: 'rgba(255,255,255,0.05)' }}
-              >
-                <div
-                  className="p-2 rounded-lg"
-                  style={{ background: `${ACCENT}14`, border: `1px solid ${ACCENT}28` }}
-                >
-                  <MessageSquare size={15} style={{ color: ACCENT }} />
-                </div>
+            <div className="studio-card rounded-2xl p-6 sm:p-8 border border-white/10 relative">
+              <div className="flex items-center justify-between mb-6">
                 <div>
-                  <div className="text-sm font-bold text-white font-heading">Send a Message</div>
-                  <div className="text-[10px] font-mono text-white/25">All fields marked * are required</div>
+                  <h3 className="font-heading font-bold text-lg text-white">Send a Quick Message</h3>
+                  <p className="text-xs font-mono text-white/40 mt-0.5">
+                    Opens directly in your email client or WhatsApp with your text prefilled.
+                  </p>
                 </div>
-                <div className="ml-auto flex items-center gap-1.5 text-[10px] font-mono text-green-400/60">
-                  <motion.div
-                    className="w-1.5 h-1.5 rounded-full bg-green-400"
-                    animate={{ opacity: [1, 0.3, 1] }}
-                    transition={{ repeat: Infinity, duration: 1.5 }}
+                <div className="w-8 h-8 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
+                  <Send size={14} />
+                </div>
+              </div>
+
+              {sentAction && (
+                <div className="mb-4 p-3 rounded-xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 text-xs font-mono flex items-center gap-2">
+                  <CheckCircle2 size={14} />
+                  <span>{sentAction}</span>
+                </div>
+              )}
+
+              <form className="space-y-4">
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-[11px] font-mono text-white/60 mb-1.5 uppercase tracking-wider">
+                      Your Name
+                    </label>
+                    <input
+                      type="text"
+                      name="name"
+                      value={form.name}
+                      onChange={handleChange}
+                      placeholder="e.g. Alex Morgan"
+                      className="w-full bg-dark/60 border border-white/10 focus:border-primary/50 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-white/20 outline-none transition-colors"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-[11px] font-mono text-white/60 mb-1.5 uppercase tracking-wider">
+                      Your Email
+                    </label>
+                    <input
+                      type="email"
+                      name="email"
+                      value={form.email}
+                      onChange={handleChange}
+                      placeholder="alex@company.com"
+                      className="w-full bg-dark/60 border border-white/10 focus:border-primary/50 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-white/20 outline-none transition-colors"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-[11px] font-mono text-white/60 mb-1.5 uppercase tracking-wider">
+                    Message
+                  </label>
+                  <textarea
+                    rows={4}
+                    name="message"
+                    value={form.message}
+                    onChange={handleChange}
+                    placeholder="Hi Bhagabata, we're hiring a Data Analyst / Power BI Developer..."
+                    className="w-full bg-dark/60 border border-white/10 focus:border-primary/50 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-white/20 outline-none transition-colors resize-none"
                   />
-                  Online
                 </div>
-              </div>
 
-              <div className="p-6">
-                <AnimatePresence mode="wait">
-                  {submitted ? (
-                    <motion.div
-                      key="success"
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.9 }}
-                      className="flex flex-col items-center justify-center py-14 text-center gap-5"
-                    >
-                      <motion.div
-                        className="w-20 h-20 rounded-full flex items-center justify-center"
-                        style={{ background: 'rgba(16,185,129,0.1)', border: '1px solid rgba(16,185,129,0.3)' }}
-                        initial={{ scale: 0 }}
-                        animate={{ scale: 1 }}
-                        transition={{ type: 'spring', stiffness: 200 }}
-                      >
-                        <CheckCircle2 size={36} className="text-emerald-400" />
-                      </motion.div>
-                      <div>
-                        <h4 className="font-heading font-bold text-white text-xl mb-2">Message Sent! 🎉</h4>
-                        <p className="text-white/45 text-sm max-w-xs leading-relaxed">
-                          Thank you for reaching out! Bhagabata will get back to you within 24 hours.
-                        </p>
-                      </div>
-                      <div className="flex items-center gap-1.5 text-[11px] font-mono text-emerald-400/70">
-                        <Sparkles size={11} /> Response expected soon
-                      </div>
-                    </motion.div>
-                  ) : (
-                    <motion.form
-                      key="form"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      onSubmit={handleSubmit}
-                      className="space-y-4"
-                    >
-                      {/* Name + Email row */}
-                      <div className="grid sm:grid-cols-2 gap-4">
-                        {[
-                          { id: 'name', label: 'Full Name *', type: 'text', placeholder: 'Your full name', required: true },
-                          { id: 'email', label: 'Email Address *', type: 'email', placeholder: 'your@email.com', required: true },
-                        ].map((f) => (
-                          <div key={f.id}>
-                            <label
-                              htmlFor={f.id}
-                              className="block text-[10px] font-mono uppercase tracking-widest mb-1.5 transition-colors duration-200"
-                              style={{ color: focused === f.id ? ACCENT : 'rgba(255,255,255,0.3)' }}
-                            >
-                              {f.label}
-                            </label>
-                            <input
-                              id={f.id}
-                              name={f.id}
-                              type={f.type}
-                              required={f.required}
-                              placeholder={f.placeholder}
-                              value={(form as Record<string, string>)[f.id]}
-                              onChange={handleChange}
-                              onFocus={() => setFocused(f.id)}
-                              onBlur={() => setFocused(null)}
-                              className={inputBase}
-                              style={{
-                                borderColor: focused === f.id ? `${ACCENT}50` : undefined,
-                                boxShadow: focused === f.id ? `0 0 0 2px ${ACCENT}12` : undefined,
-                              }}
-                            />
-                          </div>
-                        ))}
-                      </div>
+                {/* Two Clear Authentic Dispatch Actions */}
+                <div className="flex flex-col sm:flex-row items-center gap-3 pt-2">
+                  <button
+                    type="button"
+                    onClick={handleSendEmail}
+                    className="w-full sm:flex-1 py-3 px-4 rounded-xl bg-gradient-to-r from-primary to-secondary text-dark font-heading font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 hover:opacity-95 transition-all shadow-[0_0_20px_rgba(0,245,255,0.25)] cursor-pointer"
+                  >
+                    <Mail size={14} />
+                    <span>Send via Email</span>
+                  </button>
 
-                      {/* Phone */}
-                      <div>
-                        <label
-                          htmlFor="phone"
-                          className="block text-[10px] font-mono uppercase tracking-widest mb-1.5 transition-colors duration-200"
-                          style={{ color: focused === 'phone' ? ACCENT : 'rgba(255,255,255,0.3)' }}
-                        >
-                          Phone (Optional)
-                        </label>
-                        <input
-                          id="phone"
-                          name="phone"
-                          type="tel"
-                          placeholder="+91 XXXXX XXXXX"
-                          value={form.phone}
-                          onChange={handleChange}
-                          onFocus={() => setFocused('phone')}
-                          onBlur={() => setFocused(null)}
-                          className={inputBase}
-                          style={{
-                            borderColor: focused === 'phone' ? `${ACCENT}50` : undefined,
-                            boxShadow: focused === 'phone' ? `0 0 0 2px ${ACCENT}12` : undefined,
-                          }}
-                        />
-                      </div>
+                  <button
+                    type="button"
+                    onClick={handleSendWhatsApp}
+                    className="w-full sm:flex-1 py-3 px-4 rounded-xl bg-emerald-500/15 hover:bg-emerald-500/25 border border-emerald-500/30 text-emerald-400 font-mono text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer"
+                  >
+                    <FaWhatsapp size={15} />
+                    <span>Send via WhatsApp</span>
+                  </button>
+                </div>
 
-                      {/* Message */}
-                      <div>
-                        <label
-                          htmlFor="message"
-                          className="block text-[10px] font-mono uppercase tracking-widest mb-1.5 transition-colors duration-200"
-                          style={{ color: focused === 'message' ? ACCENT : 'rgba(255,255,255,0.3)' }}
-                        >
-                          Message *
-                        </label>
-                        <textarea
-                          id="message"
-                          name="message"
-                          required
-                          rows={5}
-                          placeholder="Tell me about your project, opportunity, or just say hello..."
-                          value={form.message}
-                          onChange={handleChange}
-                          onFocus={() => setFocused('message')}
-                          onBlur={() => setFocused(null)}
-                          className={`${inputBase} resize-none`}
-                          style={{
-                            borderColor: focused === 'message' ? `${ACCENT}50` : undefined,
-                            boxShadow: focused === 'message' ? `0 0 0 2px ${ACCENT}12` : undefined,
-                          }}
-                        />
-                        <div className="text-right text-[10px] font-mono text-white/20 mt-1">
-                          {form.message.length}/500
-                        </div>
-                      </div>
-
-                      {/* Submit button */}
-                      <motion.button
-                        type="submit"
-                        disabled={submitting}
-                        className="w-full flex items-center justify-center gap-2 py-3.5 rounded-xl text-sm font-bold font-mono text-dark transition-all duration-300 disabled:cursor-not-allowed"
-                        style={{
-                          background: submitting
-                            ? 'rgba(0,245,255,0.4)'
-                            : `linear-gradient(90deg, ${ACCENT}, ${SECOND})`,
-                          boxShadow: submitting ? 'none' : `0 0 30px ${ACCENT}30`,
-                        }}
-                        whileHover={submitting ? {} : { scale: 1.02, boxShadow: `0 0 40px ${ACCENT}40` }}
-                        whileTap={{ scale: 0.98 }}
-                      >
-                        {submitting ? (
-                          <>
-                            <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 1, ease: 'linear' }}>
-                              <Loader2 size={16} />
-                            </motion.div>
-                            Sending...
-                          </>
-                        ) : (
-                          <>
-                            <Send size={15} /> Send Message
-                          </>
-                        )}
-                      </motion.button>
-                    </motion.form>
-                  )}
-                </AnimatePresence>
-              </div>
+                <p className="text-[10px] font-mono text-white/35 text-center mt-2">
+                  Direct authentic actions. No fake bot promises. Connects immediately to Bhagabata Brahma.
+                </p>
+              </form>
             </div>
           </motion.div>
         </div>
