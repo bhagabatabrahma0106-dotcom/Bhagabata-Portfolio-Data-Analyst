@@ -15,7 +15,7 @@ export default function Navbar({ activeSection, setActiveSection }: NavbarProps)
   const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 30);
+    const handleScroll = () => setScrolled(window.scrollY > 25);
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -23,7 +23,7 @@ export default function Navbar({ activeSection, setActiveSection }: NavbarProps)
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);
     if (el) {
-      const offset = 80;
+      const offset = 85;
       const top = el.getBoundingClientRect().top + window.scrollY - offset;
       window.scrollTo({ top, behavior: 'smooth' });
       setActiveSection(id);
@@ -42,49 +42,44 @@ export default function Navbar({ activeSection, setActiveSection }: NavbarProps)
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
-          scrolled ? 'py-3' : 'py-5'
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          scrolled ? 'py-2.5' : 'py-4'
         }`}
       >
-        <div className="max-w-[1240px] mx-auto px-4 sm:px-6">
+        <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
           <div
-            className={`px-4 sm:px-6 py-2.5 rounded-2xl flex items-center justify-between transition-all duration-300 ${
+            className={`px-4 sm:px-6 py-2 rounded-2xl flex items-center justify-between gap-4 transition-all duration-300 ${
               scrolled
-                ? 'bg-dark/80 backdrop-blur-xl border border-white/10 shadow-[0_10px_35px_rgba(0,0,0,0.5)]'
-                : 'bg-dark/40 backdrop-blur-md border border-white/5'
+                ? 'bg-dark/85 backdrop-blur-xl border border-white/10 shadow-[0_10px_35px_rgba(0,0,0,0.6)]'
+                : 'bg-dark/60 backdrop-blur-md border border-white/8 shadow-lg'
             }`}
           >
-            {/* Brand Logo & Status */}
-            <div className="flex items-center gap-3">
-              <button
-                onClick={() => scrollTo('home')}
-                className="flex items-center gap-2.5 group cursor-pointer text-left"
-              >
-                <div className="relative w-8 h-8 rounded-full overflow-hidden p-0.5 bg-gradient-to-tr from-primary to-secondary shrink-0 transition-transform duration-300 group-hover:scale-105">
-                  <img src="/profile.png" alt="Bhagabata Brahma" className="w-full h-full object-cover rounded-full" />
-                </div>
-                <div className="flex flex-col">
-                  <span className="font-heading font-black text-sm sm:text-base text-white tracking-tight group-hover:text-primary transition-colors">
-                    bhagabata brahma<span className="text-primary font-mono">.</span>
-                  </span>
-                  <span className="text-[10px] font-mono text-white/40 -mt-0.5">data & bi</span>
-                </div>
-              </button>
+            {/* Brand Logo with Integrated Status Dot (Clean & Non-overlapping) */}
+            <button
+              onClick={() => scrollTo('home')}
+              className="flex items-center gap-2.5 group cursor-pointer text-left shrink-0"
+            >
+              <div className="relative w-8 h-8 rounded-full overflow-hidden p-0.5 bg-gradient-to-tr from-primary to-secondary shrink-0 transition-transform duration-300 group-hover:scale-105">
+                <img src="/profile.png" alt="Bhagabata Brahma" className="w-full h-full object-cover rounded-full" />
+              </div>
+              <div className="flex flex-col">
+                <span className="font-heading font-black text-sm sm:text-base text-white tracking-tight group-hover:text-primary transition-colors whitespace-nowrap">
+                  bhagabata brahma<span className="text-primary font-mono">.</span>
+                </span>
+                <span className="text-[10px] font-mono text-emerald-400 -mt-0.5 flex items-center gap-1 whitespace-nowrap">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                  <span>open to work · data & bi</span>
+                </span>
+              </div>
+            </button>
 
-              {/* Studio Status Pill (Onlines Inspired) */}
-              <span className="hidden xl:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-[10px] font-mono text-emerald-400">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
-                <span>Open for Work</span>
-              </span>
-            </div>
-
-            {/* Desktop Navigation Links */}
-            <ul className="hidden lg:flex items-center gap-6 xl:gap-8">
+            {/* Desktop Navigation Links — Compact & Non-wrapping */}
+            <ul className="hidden lg:flex items-center gap-4 xl:gap-6 shrink-0">
               {navItems.map((item) => (
-                <li key={item.id}>
+                <li key={item.id} className="shrink-0">
                   <button
                     onClick={() => scrollTo(item.id)}
-                    className={`relative font-body text-xs xl:text-sm font-medium transition-colors duration-200 cursor-pointer ${
+                    className={`relative font-body text-xs xl:text-sm font-medium transition-colors duration-200 cursor-pointer whitespace-nowrap py-1 ${
                       activeSection === item.id ? 'text-primary font-semibold' : 'text-white/60 hover:text-white'
                     }`}
                   >
@@ -92,7 +87,7 @@ export default function Navbar({ activeSection, setActiveSection }: NavbarProps)
                     {activeSection === item.id && (
                       <motion.span
                         layoutId="nav-pill"
-                        className="absolute -bottom-1.5 left-0 right-0 h-0.5 bg-gradient-to-r from-primary to-secondary rounded-full"
+                        className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-primary to-secondary rounded-full"
                       />
                     )}
                   </button>
@@ -101,8 +96,8 @@ export default function Navbar({ activeSection, setActiveSection }: NavbarProps)
             </ul>
 
             {/* Actions: Social + Hablemos / Messenger Button */}
-            <div className="flex items-center gap-2 sm:gap-3">
-              <div className="hidden sm:flex items-center gap-2">
+            <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
+              <div className="hidden sm:flex items-center gap-1.5">
                 <a
                   href={personalInfo.github}
                   target="_blank"
@@ -110,7 +105,7 @@ export default function Navbar({ activeSection, setActiveSection }: NavbarProps)
                   className="w-8 h-8 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/60 hover:text-white hover:border-primary/40 hover:bg-primary/10 transition-all duration-200"
                   aria-label="GitHub"
                 >
-                  <FiGithub size={14} />
+                  <FiGithub size={13} />
                 </a>
                 <a
                   href={personalInfo.linkedin}
@@ -119,7 +114,7 @@ export default function Navbar({ activeSection, setActiveSection }: NavbarProps)
                   className="w-8 h-8 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/60 hover:text-white hover:border-primary/40 hover:bg-primary/10 transition-all duration-200"
                   aria-label="LinkedIn"
                 >
-                  <FaLinkedinIn size={14} />
+                  <FaLinkedinIn size={13} />
                 </a>
               </div>
 
@@ -128,11 +123,10 @@ export default function Navbar({ activeSection, setActiveSection }: NavbarProps)
                 onClick={openMessenger}
                 whileHover={{ scale: 1.04 }}
                 whileTap={{ scale: 0.96 }}
-                className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-xl bg-primary/10 hover:bg-primary/20 border border-primary/30 text-xs font-mono font-semibold text-primary transition-all duration-300 shadow-[0_0_15px_rgba(0,245,255,0.15)] cursor-pointer"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-primary/10 hover:bg-primary/20 border border-primary/30 text-xs font-mono font-semibold text-primary transition-all duration-300 shadow-[0_0_15px_rgba(0,245,255,0.15)] cursor-pointer whitespace-nowrap"
               >
                 <MessageSquare size={13} />
-                <span className="hidden xs:inline">Hablemos</span>
-                <span className="xs:hidden">Chat</span>
+                <span>Chat</span>
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
               </motion.button>
 
@@ -142,7 +136,7 @@ export default function Navbar({ activeSection, setActiveSection }: NavbarProps)
                 onClick={() => setMobileOpen(!mobileOpen)}
                 aria-label="Toggle menu"
               >
-                {mobileOpen ? <X size={18} /> : <Menu size={18} />}
+                {mobileOpen ? <X size={17} /> : <Menu size={17} />}
               </button>
             </div>
           </div>
@@ -158,7 +152,7 @@ export default function Navbar({ activeSection, setActiveSection }: NavbarProps)
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -15 }}
             transition={{ duration: 0.25 }}
-            className="fixed top-20 left-4 right-4 z-40 bg-dark/95 backdrop-blur-2xl border border-white/15 rounded-2xl p-6 shadow-2xl"
+            className="fixed top-20 left-4 right-4 z-50 bg-dark/95 backdrop-blur-2xl border border-white/15 rounded-2xl p-6 shadow-2xl"
           >
             <div className="flex items-center justify-between pb-4 border-b border-white/10 mb-4">
               <span className="text-xs font-mono text-white/40 uppercase tracking-widest">Navigation</span>

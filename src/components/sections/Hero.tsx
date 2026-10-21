@@ -16,7 +16,7 @@ export default function Hero() {
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);
     if (el) {
-      const offset = 80;
+      const offset = 85;
       const top = el.getBoundingClientRect().top + window.scrollY - offset;
       window.scrollTo({ top, behavior: 'smooth' });
     }
@@ -29,20 +29,20 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex flex-col justify-center pt-24 pb-16 overflow-hidden studio-grid"
+      className="relative min-h-screen flex flex-col justify-center pt-32 sm:pt-36 pb-16 overflow-hidden studio-grid"
     >
       {/* Ambient background glows */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-primary/8 rounded-full blur-[140px] pointer-events-none z-0" />
       <div className="absolute top-1/3 right-10 w-[400px] h-[400px] bg-secondary/8 rounded-full blur-[120px] pointer-events-none z-0" />
 
-      {/* Floating Studio Cursor Pills (Inspired by onlines.com.ar) */}
+      {/* Floating Studio Cursor Pills (Positioned safely below the fixed navbar) */}
       <div className="hidden lg:block absolute inset-0 pointer-events-none z-20 max-w-7xl mx-auto">
         {/* Cursor 1: Data Analyst */}
         <motion.div
           initial={{ opacity: 0, x: -30, y: 20 }}
           animate={{ opacity: 1, x: [0, 8, 0], y: [0, -10, 0] }}
           transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute top-36 left-8"
+          className="absolute top-44 left-8"
         >
           <div className="flex items-start gap-1">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="#00F5FF" className="drop-shadow-md">
@@ -61,7 +61,7 @@ export default function Hero() {
           initial={{ opacity: 0, x: 30, y: -20 }}
           animate={{ opacity: 1, x: [0, -10, 0], y: [0, 8, 0] }}
           transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-          className="absolute top-28 right-12"
+          className="absolute top-44 right-10"
         >
           <div className="flex items-start gap-1">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B" className="drop-shadow-md">
@@ -80,7 +80,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, x: [0, 6, 0], y: [0, -8, 0] }}
           transition={{ duration: 5.5, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
-          className="absolute bottom-32 left-16"
+          className="absolute bottom-28 left-14"
         >
           <div className="flex items-start gap-1">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="#10B981" className="drop-shadow-md">
@@ -99,7 +99,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, x: [0, -8, 0], y: [0, 10, 0] }}
           transition={{ duration: 6.5, repeat: Infinity, ease: 'easeInOut', delay: 1.5 }}
-          className="absolute bottom-24 right-20"
+          className="absolute bottom-24 right-16"
         >
           <div className="flex items-start gap-1">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="#8B5CF6" className="drop-shadow-md">
@@ -123,24 +123,24 @@ export default function Hero() {
             initial="hidden"
             animate="visible"
           >
-            {/* Top Interactive Mode & Status Bar */}
+            {/* Top Interactive Mode & Status Bar with Clear Clearance */}
             <motion.div
               variants={staggerItem}
               className="flex flex-wrap items-center justify-center lg:justify-start gap-2.5 mb-6"
             >
               {/* Studio Status Pill */}
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-xs font-mono text-emerald-400 backdrop-blur-sm">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-xs font-mono text-emerald-400 backdrop-blur-sm">
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
                 <span>Open for Analyst & BI Roles</span>
                 <span className="text-white/30 hidden sm:inline">·</span>
                 <span className="text-white/60 hidden sm:inline">Bengaluru / Remote</span>
               </div>
 
-              {/* Mode Toggle Switch (Inspired by onlines.com.ar IA mode pill) */}
+              {/* Mode Toggle Switch */}
               <div className="inline-flex p-0.5 rounded-full bg-white/5 border border-white/10 text-[11px] font-mono">
                 <button
                   onClick={() => setActiveMode('analytics')}
-                  className={`px-2.5 py-0.5 rounded-full transition-all cursor-pointer ${
+                  className={`px-3 py-1 rounded-full transition-all cursor-pointer ${
                     activeMode === 'analytics'
                       ? 'bg-primary text-dark font-bold shadow-sm'
                       : 'text-white/50 hover:text-white'
@@ -150,7 +150,7 @@ export default function Hero() {
                 </button>
                 <button
                   onClick={() => setActiveMode('executive')}
-                  className={`px-2.5 py-0.5 rounded-full transition-all cursor-pointer ${
+                  className={`px-3 py-1 rounded-full transition-all cursor-pointer ${
                     activeMode === 'executive'
                       ? 'bg-secondary text-white font-bold shadow-sm'
                       : 'text-white/50 hover:text-white'
@@ -220,7 +220,7 @@ export default function Hero() {
                 className="btn-outline cursor-pointer border-white/20 text-white hover:border-primary/50 hover:text-primary flex items-center gap-2"
               >
                 <MessageSquare size={16} />
-                <span>Hablemos · Let's Talk</span>
+                <span>Chat with Bhagabata</span>
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
               </button>
 
@@ -231,7 +231,7 @@ export default function Hero() {
                 className="px-4 py-2.5 rounded-full bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 text-xs font-mono font-semibold flex items-center gap-2 transition-all cursor-pointer"
               >
                 <FaWhatsapp size={14} />
-                <span>WhatsApp Direct</span>
+                <span>WhatsApp</span>
               </a>
             </motion.div>
 
@@ -321,7 +321,7 @@ export default function Hero() {
                   {/* Subtle Dark Gradient Overlay at bottom */}
                   <div className="absolute inset-0 bg-gradient-to-t from-dark/95 via-dark/20 to-transparent" />
 
-                  {/* Floating Notification Snippet inside Image (Conversation Style) */}
+                  {/* Floating Notification Snippet inside Image */}
                   <div className="absolute top-4 left-4 right-4 p-2.5 rounded-xl bg-dark/85 border border-white/10 backdrop-blur-md shadow-lg">
                     <div className="flex items-center gap-2">
                       <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
@@ -385,7 +385,7 @@ export default function Hero() {
       {/* Scroll Down Indicator */}
       <motion.div
         className="relative z-10 pt-8 flex flex-col items-center gap-1.5 text-white/40 hover:text-primary transition-colors cursor-pointer"
-        onClick={() => scrollTo('about')}
+        onClick={() => scrollTo('highlights')}
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.2, duration: 0.6 }}
