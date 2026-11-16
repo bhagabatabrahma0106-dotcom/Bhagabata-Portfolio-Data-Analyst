@@ -28,7 +28,7 @@ export const personalInfo: PersonalInfo = {
     'Turning raw data into reliable decisions — through SQL, Power BI, and data governance.',
   email: 'bhagabatabrahma0106@gmail.com',
   phone: '+91 6371206662',
-  location: 'Whitefield, Bengaluru, Karnataka, India — 560066',
+  location: 'Bengaluru, India',
   github: 'https://github.com/bhagabatabrahma0106-dotcom',
   linkedin: 'https://www.linkedin.com/in/bhagabata-brahma/',
   portfolio: 'https://bhagabata-brahma-data-analyst.vercel.app/',
