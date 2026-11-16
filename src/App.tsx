@@ -1,9 +1,7 @@
 ﻿import React, { useEffect, useState } from 'react';
 import Navbar from './components/layout/Navbar';
 import Loader from './components/layout/Loader';
-import Hero from './components/sections/Hero';
-import Statistics from './components/sections/Statistics';
-import Projects from './components/sections/Projects';
+import PremiumStudio from './components/sections/PremiumStudio';
 import Experience from './components/sections/Experience';
 import Skills from './components/sections/Skills';
 import About from './components/sections/About';
@@ -77,13 +75,7 @@ function App() {
       {/* Page content in strategic studio sequence */}
       <main className="relative z-10">
         {/* Section 1: Hero & Introduction */}
-        <Hero />
-
-        {/* Section 2: Professional Highlights (Proof of Work) */}
-        <Statistics />
-
-        {/* Section 3: Selected Projects */}
-        <Projects />
+        <PremiumStudio />
 
         {/* Section 4: Professional Experience */}
         <Experience />
