@@ -116,7 +116,7 @@ export default function PremiumStudio() {
               <div className="mb-4 text-xs font-medium uppercase tracking-wider text-slate-400">Conceptual dashboard</div>
               <div className="flex h-36 items-end justify-between gap-2 border-b border-slate-600/70 pb-1">
                 {[31,56,40,71,58,82,66,95].map((value, i) => (
-                  <motion.span key={i} aria-hidden="true" className="min-w-0 flex-1 rounded-t bg-gradient-to-t from-indigo-700 to-cyan-400" initial={reducedMotion ? false : { height: 0 }} whileInView={{ height: `${value}%` }} viewport={{ once: true }} transition={{ duration: reducedMotion ? 0 : .75, delay: reducedMotion ? 0 : i * .08 }} />
+                  <motion.span key={i} aria-hidden="true" className="min-w-0 flex-1 rounded-t bg-gradient-to-t from-indigo-700 to-cyan-400" style={reducedMotion ? { height: `${value}%` } : undefined} initial={reducedMotion ? false : { height: 0 }} whileInView={reducedMotion ? undefined : { height: `${value}%` }} viewport={{ once: true }} transition={{ duration: reducedMotion ? 0 : .75, delay: reducedMotion ? 0 : i * .08 }} />
                 ))}
               </div>
             </div>

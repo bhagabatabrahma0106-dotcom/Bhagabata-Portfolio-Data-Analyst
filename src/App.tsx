@@ -17,9 +17,10 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [activeSection, setActiveSection] = useState('home');
 
-  // Finish loader after 2.2s
+  // Keep the loading transition brief; avoid an artificial wait for reduced-motion users.
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 2200);
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const timer = setTimeout(() => setLoading(false), prefersReduced ? 0 : 650);
     return () => clearTimeout(timer);
   }, []);
 
