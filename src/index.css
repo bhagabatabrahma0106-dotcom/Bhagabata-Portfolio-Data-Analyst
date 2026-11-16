@@ -274,3 +274,13 @@ body::before {
   white-space: nowrap;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
 }
+
+/* Premium analytics accessibility: motion is optional, never essential. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

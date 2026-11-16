@@ -1,13 +1,11 @@
 ﻿import React, { useEffect, useState } from 'react';
 import Navbar from './components/layout/Navbar';
 import Loader from './components/layout/Loader';
-import Hero from './components/sections/Hero';
-import Statistics from './components/sections/Statistics';
-import Projects from './components/sections/Projects';
+import PremiumStudio from './components/sections/PremiumStudio';
 import Experience from './components/sections/Experience';
 import Skills from './components/sections/Skills';
 import About from './components/sections/About';
-import Certificates from './components/sections/Certificates';
+import PremiumLearning from './components/sections/PremiumLearning';
 import Services from './components/sections/Services';
 import SkillLab from './components/sections/SkillLab';
 import Contact from './components/sections/Contact';
@@ -19,9 +17,10 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [activeSection, setActiveSection] = useState('home');
 
-  // Finish loader after 2.2s
+  // Keep the loading transition brief; avoid an artificial wait for reduced-motion users.
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 2200);
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const timer = setTimeout(() => setLoading(false), prefersReduced ? 0 : 650);
     return () => clearTimeout(timer);
   }, []);
 
@@ -35,7 +34,7 @@ function App() {
       'experience',
       'skills',
       'about',
-      'certificates',
+      'learning',
       'services',
       'skilllab',
       'contact',
@@ -77,13 +76,7 @@ function App() {
       {/* Page content in strategic studio sequence */}
       <main className="relative z-10">
         {/* Section 1: Hero & Introduction */}
-        <Hero />
-
-        {/* Section 2: Professional Highlights (Proof of Work) */}
-        <Statistics />
-
-        {/* Section 3: Selected Projects */}
-        <Projects />
+        <PremiumStudio />
 
         {/* Section 4: Professional Experience */}
         <Experience />
@@ -95,7 +88,7 @@ function App() {
         <About />
 
         {/* Section 7: Professional Development & Certifications */}
-        <Certificates />
+        <PremiumLearning />
 
         {/* Section 8: Services */}
         <Services />

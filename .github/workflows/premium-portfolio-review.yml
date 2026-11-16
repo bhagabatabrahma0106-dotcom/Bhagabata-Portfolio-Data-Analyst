@@ -1,0 +1,81 @@
+name: Premium portfolio branch QA
+
+on:
+  push:
+    branches:
+      - feat/premium-profile-redesign
+    paths:
+      - 'src/**'
+      - 'public/portfolio-assets/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.github/workflows/premium-portfolio-review.yml'
+  pull_request:
+    paths:
+      - 'src/**'
+      - 'public/portfolio-assets/**'
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Install exact lockfile dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Type-check and build Vite site
+        run: npm run build
+      - name: Check generated site assets
+        run: |
+          test -f dist/index.html
+          for name in urbancart pizza-sales edtech superstore banking dynamics-365-fo; do
+            test -s "dist/portfolio-assets/$name-premium.svg"
+          done
+          echo "Built assets and six project illustrations exist"
+
+
+  browser:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 22
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - name: Install headless browser test dependency locally for CI only
+        run: npm install --no-save --no-package-lock --no-audit --no-fund playwright@1.64.1
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Build review version
+        run: npm run build
+      - name: Start local preview
+        run: |
+          nohup npm run preview -- --host 127.0.0.1 --port 4173 > /tmp/premium-preview.log 2>&1 &
+          for i in $(seq 1 30); do
+            if curl -fsS http://127.0.0.1:4173/ > /dev/null; then
+              echo "Preview ready"; exit 0
+            fi
+            sleep 1
+          done
+          cat /tmp/premium-preview.log
+          exit 1
+      - name: Test six responsive viewports
+        run: node scripts/verify-responsive.mjs
+      - name: Save review screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: portfolio-review-screenshots
+          path: artifacts/
+          if-no-files-found: ignore
+          retention-days: 7
