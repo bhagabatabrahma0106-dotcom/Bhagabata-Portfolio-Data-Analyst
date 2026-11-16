@@ -1,0 +1,41 @@
+name: Premium portfolio branch QA
+
+on:
+  push:
+    branches:
+      - feat/premium-profile-redesign
+    paths:
+      - 'src/**'
+      - 'public/portfolio-assets/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.github/workflows/premium-portfolio-review.yml'
+  pull_request:
+    paths:
+      - 'src/**'
+      - 'public/portfolio-assets/**'
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Install exact lockfile dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Type-check and build Vite site
+        run: npm run build
+      - name: Check generated site assets
+        run: |
+          test -f dist/index.html
+          for name in urbancart pizza-sales edtech superstore banking dynamics-365-fo; do
+            test -s "dist/portfolio-assets/$name-premium.svg"
+          done
+          echo "Built assets and six project illustrations exist"
