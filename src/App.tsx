@@ -5,7 +5,7 @@ import PremiumStudio from './components/sections/PremiumStudio';
 import Experience from './components/sections/Experience';
 import Skills from './components/sections/Skills';
 import About from './components/sections/About';
-import Certificates from './components/sections/Certificates';
+import PremiumLearning from './components/sections/PremiumLearning';
 import Services from './components/sections/Services';
 import SkillLab from './components/sections/SkillLab';
 import Contact from './components/sections/Contact';
@@ -33,7 +33,7 @@ function App() {
       'experience',
       'skills',
       'about',
-      'certificates',
+      'learning',
       'services',
       'skilllab',
       'contact',
@@ -87,7 +87,7 @@ function App() {
         <About />
 
         {/* Section 7: Professional Development & Certifications */}
-        <Certificates />
+        <PremiumLearning />
 
         {/* Section 8: Services */}
         <Services />
